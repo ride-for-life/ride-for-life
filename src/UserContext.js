@@ -11,10 +11,12 @@ let reducer = (state,action) => {
     case "reset":
       return initialState;
     case "numPush":
-      const numPushArray = state.phoneNum.slice();
-      numPushArray.push(action.payload);
-      console.log(numPushArray);
-      return {...state, phoneNum: [...numPushArray] };
+      if (state.phoneNum.length < 12) {
+        const numPushArray = state.phoneNum.slice();
+        numPushArray.push(action.payload);
+        console.log(numPushArray);
+        return {...state, phoneNum: [...numPushArray] }
+      } else { return state }
     case "numPop":
       const numPopArray = state.phoneNum.slice();
       numPopArray.pop();
