@@ -26,9 +26,9 @@ const Phone1 = () => {
         <div style={all}>
             <BackButton />
             <h1 style={header}>{title}</h1>
-            <TransitionButton text='DRIVER' />
-            <TransitionButton text='PREGNANT MOM' />
-            <TransitionButton text='CAREGIVER' />
+            <TransitionButton link='somecomponenet' route='/driver' text='DRIVER' />
+            <TransitionButton link='somecomponenet' route='/mom-to-be' text='PREGNANT MOM' />
+            <TransitionButton link='somecomponenet' route='/caregiver' text='CAREGIVER' />
         </div>
     )
 }

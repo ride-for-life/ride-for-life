@@ -19,21 +19,31 @@ const button = {
 class TransitionButton extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            link: '',
+            route: ''
+        }
         this.buttonClick = this.buttonClick.bind(this)
+        
     }
 
     buttonClick() {
         console.log('hello, this button has been clicked')
+        this.setState({ route: this.props.route})
     }
 
     render() {
        return (
             <div>
+                {console.log(this.state.route)}
+                <Link to={this.state.link} /> 
+                <Route path={this.state.route} />
                 <button style={button} onClick={this.buttonClick}>
                     {this.props.text}
                 </button>
             </div>
     )}
 }
+
 
 export default TransitionButton
