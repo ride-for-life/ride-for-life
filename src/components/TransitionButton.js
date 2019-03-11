@@ -1,4 +1,7 @@
 import React from 'react'
+import { Route, Link } from 'react-router-dom'
+import PhonePage from '../PhonePage'
+
 
 const button = {
     background: '#4C6A2D',

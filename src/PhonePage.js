@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
+import Phone1 from './components/Phone1'
 
 const PhonePage = props => {
 
@@ -20,6 +21,7 @@ const PhonePage = props => {
         <button onClick={numPush(2)}>Two</button>
         <button onClick={numPop}>Back</button>
         <button onClick={reset}>Reset</button>
+        <Phone1 />
       </div>
     </div>
   );

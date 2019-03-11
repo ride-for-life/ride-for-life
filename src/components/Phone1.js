@@ -1,6 +1,7 @@
 import React from 'react'
 import TransitionButton from './TransitionButton'
 import BackButton from './BackButton'
+import { Route, Link } from 'react-router-dom'
 
 const title = 'Are you a:'
 
