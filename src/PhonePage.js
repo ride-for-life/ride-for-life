@@ -18,6 +18,9 @@ const PhonePage = props => {
       <div>
         <button onClick={numPush(1)}>One</button>
         <button onClick={numPush(2)}>Two</button>
+        <button onClick={numPush(3)}>Three</button>
+        <button onClick={numPush(4)}>Four</button>
+        <button onClick={numPush(5)}>Five</button>
         <button onClick={numPop}>Back</button>
         <button onClick={reset}>Reset</button>
       </div>
