@@ -30,14 +30,14 @@ import { UserContext } from '../UserContext';
     width: 3rem;
     background: #454F63;
     color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    border: 0px;
   `;
 
 const PhoneKey = props => {
   let { state, dispatch } = useContext(UserContext);
 
   let numPush = num => () => dispatch({ type: "numPush", payload: num });
-  let numPop = () => dispatch({ type: "numPop" });
-  let reset = () => dispatch({ type: "reset" });
 
   return <KeyCap onClick={numPush(props.keyNum)}>{props.keyNum}</KeyCap>
 };

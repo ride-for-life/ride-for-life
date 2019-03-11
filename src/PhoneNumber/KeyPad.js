@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { UserContext } from '../UserContext';
 import PhoneKey from './PhoneKey';
+import Backspace from './Backspace';
 
 // TBD: Implement Ugandan telephone length ( 12 )
 // Extension/Area Codes may not be Ugandan? Rwandan numbers in Uganda and vice versa, apparently.
@@ -26,23 +28,28 @@ import PhoneKey from './PhoneKey';
 //   `}
 // `
 
+const KeyContainer = styled.div`
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem;
+  grid-gap: 5px;
+  background: #232530;
+  max-width: 50%;
+`;
+
 const KeyPad = props => {
 
   let { state, dispatch } = useContext(UserContext);
-
-  let numPush = num => () => dispatch({ type: "numPush", payload: num });
-  let numPop = () => dispatch({ type: "numPop" });
   let reset = () => dispatch({ type: "reset" });
 
   const keyNums = [1,2,3,4,5,6,7,8,9,0]
   const keyMap = keyNums.map(keyNum => <PhoneKey keyNum={keyNum} />)
 
   return (
-      <div>
+      <KeyContainer>
         {keyMap}
-        <button onClick={numPop}>-</button>
+        <Backspace />
         <button onClick={reset}>Reset</button>
-      </div>
+      </KeyContainer>
   );
 };
 

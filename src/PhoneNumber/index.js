@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../UserContext';
-import PhoneKey from './PhoneKey';
+import React from 'react';
+import styled from 'styled-components';
+
 import NumberDisplay from './NumberDisplay';
 import KeyPad from './KeyPad';
 
@@ -15,13 +15,21 @@ import KeyPad from './KeyPad';
 // emoji?
 // Ideally an option to just type numbers as well as click through.
 
+const PageContainer = styled.section`
+  background: #2A2E43;
+  color: white;
+`;
+
 const PhoneNumber = props => {
 
   return (
-    <div>
+    <PageContainer>
+      <h1>Enter your phone number:</h1>
       <NumberDisplay />
+      {/* Need the transition button here.
+        It needs to not work unless a number is in. */}
       <KeyPad />
-    </div>
+    </PageContainer>
   );
 };
 
