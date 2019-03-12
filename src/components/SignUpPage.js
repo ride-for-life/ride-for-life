@@ -2,14 +2,9 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
 import styled from 'styled-components';
-import {
-  BrowserRouter as Router,
-  NavLink, Link,
-  Route
+import {BrowserRouter as Router, NavLink, Link, Route} from 'react-router-dom';
 
-} from 'react-router-dom';
-
-import './index.css';
+// import './index.css';
 
 const Body = styled.div`
 
@@ -96,10 +91,6 @@ const ContinueButton = styled.button`
 const SignUpPage = props => {
 
   let { state, dispatch } = useContext(UserContext);
-
-
-
-
 
   return (
     <Body>
