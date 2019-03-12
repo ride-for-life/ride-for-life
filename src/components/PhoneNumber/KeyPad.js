@@ -4,29 +4,7 @@ import { UserContext } from '../UserContext';
 import PhoneKey from './PhoneKey';
 import Backspace from './Backspace';
 
-// TBD: Implement Ugandan telephone length ( 12 )
 // Extension/Area Codes may not be Ugandan? Rwandan numbers in Uganda and vice versa, apparently.
-
-// KeyContainer styled component
-
-// const  = styled.a`
-//   /* This renders the buttons above... Edit me! */
-//   display: inline-block;
-//   border-radius: 3px;
-//   padding: 0.5rem 0;
-//   margin: 0.5rem 1rem;
-//   width: 11rem;
-//   background: transparent;
-//   color: white;
-//   border: 2px solid white;
-//
-//   /* The GitHub button is a primary button
-//    * edit this to target it specifically! */
-//   ${props => props.primary && css`
-//     background: white;
-//     color: palevioletred;
-//   `}
-// `
 
 const KeyContainer = styled.div`
   display: grid;
