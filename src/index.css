@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.nav-link {
+/*   
+    background: ${props => props.primary ? "#4C6A2D" : "white"};
+    color: ${props => props.primary ? "white" : "#78849E"}; */
+    background: #4C6A2D;
+    color: white;
+    padding-top: 30px;
+    font-size: 20pt;
+    text-align: center;
+    height: 32pt;
+    width: 100pt;
+    margin: 20px 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: Montserrat;
+
+}

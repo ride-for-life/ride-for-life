@@ -5,7 +5,9 @@ import PhoneNumber from './PhoneNumber/';
 import App from './App'
 import * as serviceWorker from './serviceWorker';
 import { UserContextProvider } from './UserContext';
-import PhonePage from './PhonePage'
+import SignUpPage from './SignUpPage'
+import App from './App'
+import Map from './Map'
 
 ReactDOM.render(<UserContextProvider><App /></UserContextProvider>, document.getElementById('root'));
 
