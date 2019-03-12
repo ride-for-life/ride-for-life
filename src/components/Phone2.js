@@ -3,7 +3,7 @@ import TransitionButton from './TransitionButton'
 import BackButton from './BackButton'
 import { Route, Link } from 'react-router-dom'
 
-const title = 'Are you a:'
+const title = 'Do you want to:'
 
 const header = {
     width: '100%',
@@ -22,17 +22,15 @@ const all = {
 }
 
 
-const Phone1 = () => {
+const Phone2 = () => {
     return (
         <div style={all}>
             <BackButton />
             <h1 style={header}>{title}</h1>
-            <TransitionButton link='/driver' route='somecomponent' text='DRIVER' />
-            <TransitionButton link='/mom-to-be' route='somecomponent' text='PREGNANT MOM' />
-            <TransitionButton link='/caregiver' route='somecomponent' text='CAREGIVER' />
+            <TransitionButton link='/request-ride' route='somecomponent' text='REQUEST RIDE' />
+            <TransitionButton link='/view-drivers' route='somecomponent' text='VIEW DRIVERS' />
         </div>
     )
 }
 
-
-export default Phone1
+export default Phone2
