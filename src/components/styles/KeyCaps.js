@@ -23,3 +23,16 @@ export const GhostCap = styled.button`
   color: white;
   border: 0px;
 `;
+
+export const WideCap = styled.button`
+    background: #4C6A2D;
+    font-size: 30px;
+    text-align: center;
+    height: 72px;
+    width: 327px;
+    color: #FFFFFF;
+    margin: 20px 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+`

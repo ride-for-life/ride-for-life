@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   NavLink, Link,
   Route
-  
+
 } from 'react-router-dom';
 
 import './index.css';
@@ -21,7 +21,7 @@ display: flex;
  margin-top: 4%;
 //  margin-right: 30%;\
 border: solid grey;
- 
+
 `;
 
 
@@ -99,11 +99,11 @@ const SignUpPage = props => {
 
 
 
-  
+
 
   return (
     <Body>
-      
+
       <div>
         <SignUpButtons>
            <NavLink className = 'nav-link' to = '/'>Home</NavLink>
@@ -112,37 +112,37 @@ const SignUpPage = props => {
            <Button primary>SIGN UP</Button>
         </SignUpButtons>
 
-         
+
            <form /*onSubmit = {this.addSmurf}*/>
-           <Inputs> 
+           <Inputs>
              <Input  style = {{color: "green"}}
                      type="text"
                      name="name"
                     //  value={this.state.name}
                     //  onChange={this.handleChanges}
                      placeholder="Name"
-              /> 
+              />
               <Input
                      type="text"
                      name="location"
                     //  value={this.state.age}
                     //  onChange={this.handleChanges}
                      placeholder="Location"
-              /> 
+              />
               <Input
                      type="text"
                      name="price"
                     //  value={this.state.height}
                     //  onChange={this.handleChanges}
                      placeholder="Price"
-              /> 
+              />
               <Input
                      type="text"
                      name="photo"
                     //  value={this.state.height}
                     //  onChange={this.handleChanges}
                      placeholder="Upload Photo"
-              /> 
+              />
               <ContinueButton> CONTINUE </ContinueButton>
                </Inputs>
             </form>
@@ -153,5 +153,3 @@ const SignUpPage = props => {
 };
 
 export default SignUpPage;
-
-
