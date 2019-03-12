@@ -1,37 +1,9 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React, { Component } from 'react';
+import ReactGoogleMapLoader from "react-google-maps-loader";
+import ReactGoogleMap from "react-google-map";
+import MapDirectionRenderer from './MapDirectionRenderer';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>
-//           </p>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Learn React
-//           </a>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-import React from 'react'
-import ReactGoogleMapLoader from "react-google-maps-loader"
-import ReactGoogleMap from "react-google-map"
-import MapDirectionRenderer from './MapDirectionRenderer'
-
-export default class App extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,8 +15,10 @@ export default class App extends React.Component {
     };
   };
 
+
   render() {
     return (
+    <Router>
       <div>
         {
           this.state.myArray.map((a,index) => {
@@ -55,6 +29,16 @@ export default class App extends React.Component {
           })
         }
       </div>
+
+       <div>
+        {/* <Link to='/'><Phone1 /></Link> */}
+        <Route exact path='/' component={Phone1} />
+        <Route exact path='/mom-to-be' component={Phone2} />
+        <Route exact path='/caregiver' component={Phone2} />
+        </div>
+      </Router>
     );
   }
 }
+
+export default App;
