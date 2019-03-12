@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TextDisplay from '../styles';
+// import { TextDisplay from '../styles';
 import { UserContext } from '../UserContext';
 
 const NumberDisplay = props => {
