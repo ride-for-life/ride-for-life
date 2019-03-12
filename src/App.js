@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import PhonePage from './PhonePage'
+import TransitionButton from './components/TransitionButton'
+import Phone1 from './components/Phone1'
+import Phone2 from './components/Phone2'
 
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <PhonePage />
+        {/* <Link to='/'><Phone1 /></Link> */}
+        <Route exact path='/' component={Phone1} />
+        <Route exact path='/mom-to-be' component={Phone2} />
+        <Route exact path='/caregiver' component={Phone2} />
+        </div>
+      </Router>
     );
   }
 }

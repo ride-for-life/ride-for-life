@@ -21,29 +21,27 @@ class TransitionButton extends React.Component {
         super(props)
         this.state = {
             link: '',
-            route: ''
         }
-        this.buttonClick = this.buttonClick.bind(this)
-        
+        this.eventHandler = this.eventHandler.bind(this)
     }
 
-    buttonClick() {
-        console.log('hello, this button has been clicked')
-        this.setState({ route: this.props.route})
+    eventHandler() {
+        console.log('hello, hover has changed state')
+        this.setState({ 
+            link: this.props.link,
+        })
     }
 
     render() {
        return (
             <div>
-                {console.log(this.state.route)}
-                <Link to={this.state.link} /> 
-                <Route path={this.state.route} />
-                <button style={button} onClick={this.buttonClick}>
+                {console.log(this.state.link)}
+                <Link to={this.state.link}> 
+                <button style={button} onMouseEnter={this.eventHandler}>
                     {this.props.text}
-                </button>
+                </button></Link>
             </div>
     )}
 }
-
 
 export default TransitionButton
