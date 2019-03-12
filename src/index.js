@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PhoneNumber from './PhoneNumber/';
 import App from './App'
 import * as serviceWorker from './serviceWorker';
+<<<<<<< Updated upstream
 import { UserContextProvider } from './UserContext';
 import SignUpPage from './SignUpPage'
 import App from './App'
 import Map from './Map'
+=======
+import { UserContextProvider } from './components/UserContext';
+>>>>>>> Stashed changes
 
 ReactDOM.render(<UserContextProvider><App /></UserContextProvider>, document.getElementById('root'));
 

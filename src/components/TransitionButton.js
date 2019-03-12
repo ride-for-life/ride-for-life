@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import PhonePage from '../PhonePage'
+
 
 
 const button = {
@@ -27,7 +27,7 @@ class TransitionButton extends React.Component {
 
     eventHandler() {
         console.log('hello, hover has changed state')
-        this.setState({ 
+        this.setState({
             link: this.props.link,
         })
     }
@@ -36,7 +36,7 @@ class TransitionButton extends React.Component {
        return (
             <div>
                 {console.log(this.state.link)}
-                <Link to={this.state.link}> 
+                <Link to={this.state.link}>
                 <button style={button} onMouseEnter={this.eventHandler}>
                     {this.props.text}
                 </button></Link>
