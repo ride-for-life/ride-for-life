@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {KeyCap}styled from '../styles';
+import { KeyCap } from '../styles';
 import { UserContext } from '../UserContext';
 
 
