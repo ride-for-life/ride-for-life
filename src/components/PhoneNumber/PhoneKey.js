@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import {KeyCap}styled from '../styles';
-import { UserContext } from '../UserContext';
+// import React, { useContext } from 'react';
+// import {KeyCap}styled from '../styles';
+// import { UserContext } from '../UserContext';
 
 
   // const  = styled.a`
@@ -24,14 +24,14 @@ import { UserContext } from '../UserContext';
 
 
 
-const PhoneKey = props => {
-  let { state, dispatch } = useContext(UserContext);
+// const PhoneKey = props => {
+//   let { state, dispatch } = useContext(UserContext);
 
-  let numPush = num => () => dispatch({ type: "numPush", payload: num });
+//   let numPush = num => () => dispatch({ type: "numPush", payload: num });
 
-  return <KeyCap onClick={numPush(props.keyNum)}>{props.keyNum}</KeyCap>
-};
+//   return <KeyCap onClick={numPush(props.keyNum)}>{props.keyNum}</KeyCap>
+// };
 
 
 
-export default PhoneKey;
+// export default PhoneKey;
