@@ -8,6 +8,7 @@ export const colors = {
     forest: "#4C6A2D",
     sky: "#BBD1EB",
     evening: "#555869",
+    dusk: "#2A2E43",
     black: "#000000",
     sand: "#A39280",
 }

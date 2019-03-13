@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { fontFamily } from './Theme.js';
+import { colors, fontFamily } from './Theme.js';
 
 export const HeadText = styled.h1`
-  width: 100%;
+  width: 327px;
   max-width: 100%;
   text-align: left;
   /* FIXME: This is a hack. Reflow PhoneDiv and use correct width */
-  padding-left: 25px;
+  color: ${colors.white};
   font-family: ${fontFamily};
 `
