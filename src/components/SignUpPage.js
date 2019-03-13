@@ -79,8 +79,6 @@ const SignUpPage = props => {
 
       <Container>
         <SignUpButtons>
-           <NavLink className = 'nav-link' to = '/'>Home</NavLink>
-           <NavLink to = '/'>Home</NavLink>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
