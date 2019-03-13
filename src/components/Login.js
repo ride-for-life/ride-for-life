@@ -23,29 +23,11 @@ const Login = props => {
 
  const driverLogin = (event) => {
    event.preventDefault();
-   axios.post('https://rideforlife.herokuapp.com/api/drivers/login', { loginQuery: "Mariane.OKon", password: "password" })
+   const assembleQuery = { loginQuery: name , password:  pass  };
+   axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
     .then(data => setResult(JSON.stringify(data)))
     .catch(error => setResult(JSON.stringify(error)))
  };
-import axios from "axios";
-import { WideCap } from "./styles";
-
-const Login = props => {
- const [click, setClick] = useState(1);
- const [result, setResult] = useState("Awaiting results?");
-
- useEffect(
-   () => {
-     const axiosGet = async () => {
-       const data = await axios.get(
-         `https://rideforlife.herokuapp.com/api/drivers/${click}`
-       );
-       setResult(JSON.stringify(data));
-     };
-     axiosGet();
-   },
-   [click]
- );
 
  // Method Url: /api/drivers/:id
 
@@ -58,13 +40,6 @@ const Login = props => {
     <p>{pass}</p>
     <p>{result}</p>
    </form>
- );
-};
-
-   <div>
-     <WideCap onClick={() => setClick(click + 1)}>Increase? {click}</WideCap>
-     <p>{result}</p>
-   </div>
  );
 };
 
