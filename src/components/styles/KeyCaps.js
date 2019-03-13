@@ -75,6 +75,7 @@ export const WideCap = styled(Button).attrs(({ color, background }) => ({
 }))`
   height: 72px;
   width: 327px;
+  max-width: 100%;
   font-size: 25px;
   margin: 20px 0;
 `
