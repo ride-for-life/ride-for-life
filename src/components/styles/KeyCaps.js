@@ -1,19 +1,28 @@
 import styled from 'styled-components';
+import { colors, fontFamily } from './Theme.js'
 
 export const Button = styled.button`
-    background: ${props => props.primary ? "#4C6A2D" : "white"};
-    color: ${props => props.primary ? "white" : "#78849E"};
-    font-size: 15pt;
-    text-align: center;
-    height: 52pt;
-    width: 100pt;
-    margin: 20px 0;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    // font-family: Montserrat;
-
+  color: ${props => props.color || colors.white};
+  background: ${props => props.primary ? colors.white : (props.background || colors.thunderhead)}
+  box-sizing: border-box;
+  font-size: 15pt;
+  text-align: center;
+  height: 52pt;
+  width: 100pt;
+  max-width: 100%;
+  margin: 20px 0;
+  border: 4px solid ${props => props.background || colors.thunderhead};
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: ${fontFamily};
+  box-shadow: inset 0 0 15px ${props => props.primary ? 'none' : (props.background || colors.thunderhead)};
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s;
+  &:hover, &:focus {
+    color: ${props => props.background || colors.thunderhead};
+    background: ${props => props.color || colors.white};
+    box-shadow: inset 0 0 0 ${props => props.primary ? 'none' : (props.background || colors.thunderhead)};
+  }
 `;
 
 export const SignUpButtons = styled.div`
@@ -23,55 +32,51 @@ export const SignUpButtons = styled.div`
   justify-content: space-evenly;
 `;
 
-
-export const ContinueButton = styled.button`
-  height: 75pt;
-  width: 85%;
-  display: flex;
-  background: #A39280;
-  border: solid #A39280;
-  justify-content: center;
+export const ContinueButton = styled(Button).attrs(({ color, background }) => ({
+    color: color || colors.white,
+    background: background || colors.sand,
+}))`
+  height: 80px;
+  width: 100%;
   margin: 0 auto;
-  border-radius: 20px;
-  font-size: 15pt;
-  font-weight: 600;
-  color: white;
-  font-color: green;
-`;
+`
 
-export const KeyCap = styled.button`
+export const KeyCap = styled(Button).attrs(({ color, background }) => ({
+    color: color || colors.white,
+    background: background || colors.storm,
+}))`
+  border: none;
   display: inline-block;
   border-radius: 3px;
-  padding: 0.5rem 0;
-  margin: 0.5rem;
-  width: 3rem;
-  background: #454F63;
-  color: white;
+  /* padding: 0.5rem 0; */
+  height: 100%;
+  width: 100%;
   box-shadow: 1px 1px 1px 1px black;
-  border: 0px;
-`;
+  font-size: 1.8rem;
+  &:hover, &:focus {
+    box-shadow: 1px 1px 1px 1px black;
+  }
+`
 
+export const GhostCap = styled(KeyCap).attrs(({ color, background }) => ({
+    color: color || colors.white,
+    background: 'transparent',
+}))`
+  box-shadow: none;
+  &:hover, &:focus {
+    box-shadow: none;
+    color: ${props => props.color};
+    background: ${props => props.background};
+  }
+`
 
-export const GhostCap = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  padding: 0.5rem 0;
-  margin: 0.5rem;
-  width: 3rem;
-  background: transparent;
-  color: white;
-  border: 0px;
-`;
-
-export const WideCap = styled.button`
-    background: #4C6A2D;
-    font-size: 30px;
-    text-align: center;
-    height: 72px;
-    width: 327px;
-    color: #FFFFFF;
-    margin: 20px 0;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
+export const WideCap = styled(Button).attrs(({ color, background }) => ({
+    color: color || colors.white,
+    background: background || colors.forest,
+}))`
+  height: 72px;
+  width: 327px;
+  max-width: 100%;
+  font-size: 25px;
+  margin: 20px 0;
 `
