@@ -9,6 +9,7 @@ export const colors = {
     sky: "#BBD1EB",
     evening: "#555869",
     dusk: "#2A2E43",
+    midnight: "#232530",
     black: "#000000",
     sand: "#A39280",
 }

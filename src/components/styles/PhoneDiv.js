@@ -2,16 +2,6 @@ import styled from 'styled-components';
 import { colors } from './Theme.js';
 
 export const PhoneDiv = styled.div`
-    /* color: #FFFFFF;
-    * background: #2A2E43;
-    * display: flex;
-    * flex-direciton: column;
-    * justify-content: space-between;
-    * align-items: center;
-    * width: 375px;
-    * max-width: 100%;
-    * height: 812px;
-    * font-family: Gibson; */
     display: flex;
     padding: 10% 5%;
     box-sizing: border-box;
