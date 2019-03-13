@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { UserContext } from '../UserContext';
 import PhoneKey from './PhoneKey';
 import Backspace from './Backspace';
+import { KeyCap } from '../styles/KeyCaps.js';
+import { colors } from '../styles/Theme.js';
 
 // Extension/Area Codes may not be Ugandan? Rwandan numbers in Uganda and vice versa, apparently.
 
@@ -26,7 +28,7 @@ const KeyPad = props => {
       <KeyContainer>
         {keyMap}
         <Backspace />
-        <button onClick={reset}>Reset</button>
+        <KeyCap onClick={reset} color='colors.thunderhead' background='colors.white'>Reset</KeyCap>
       </KeyContainer>
   );
 };
