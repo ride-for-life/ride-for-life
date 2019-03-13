@@ -48,12 +48,11 @@ export const KeyCap = styled(Button).attrs(({ color, background }) => ({
   border: none;
   display: inline-block;
   border-radius: 3px;
-  padding: 0.5rem 0;
-  margin: 0.5rem;
-  height: auto;
-  width: 3rem;
+  /* padding: 0.5rem 0; */
+  height: 100%;
+  width: 100%;
   box-shadow: 1px 1px 1px 1px black;
-  font-size: 10pt;
+  font-size: 1.8rem;
   &:hover, &:focus {
     box-shadow: 1px 1px 1px 1px black;
   }
@@ -63,7 +62,9 @@ export const GhostCap = styled(KeyCap).attrs(({ color, background }) => ({
     color: color || colors.white,
     background: 'transparent',
 }))`
+  box-shadow: none;
   &:hover, &:focus {
+    box-shadow: none;
     color: ${props => props.color};
     background: ${props => props.background};
   }
