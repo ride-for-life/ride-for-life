@@ -4,17 +4,16 @@ import { WideCap } from './styles';
 
 const Login = props => {
   const [click, setClick] = useState(0);
-  useEffect(() => {
-    axios.get('https://rideforlife.herokuapp.com/api/'), [count]
-  }
 
-}, [click]);
+
 
 
   return (
-    <WideCap onClick={() => setCount(count +1)}
-      {click}
-    </WideCap>
+    <div>
+      <WideCap onClick={() => setClick(click +1)}>
+        Increase? {click}
+      </WideCap>
+    </div>
   )
 };
 

@@ -14,7 +14,7 @@ code {
 }
 
 .nav-link {
-/*   
+/*
     background: ${props => props.primary ? "#4C6A2D" : "white"};
     color: ${props => props.primary ? "white" : "#78849E"}; */
     background: #4C6A2D;

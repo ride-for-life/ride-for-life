@@ -4,6 +4,7 @@ import SignUpPage from './SignUp/SignUpPage'
 import {Route, Link, NavLink} from 'react-router-dom';
 import Phone1 from './Phone1';
 import Phone2 from './Phone2';
+import Login from './Login';
 
 
 
@@ -19,9 +20,10 @@ const NavBar = () => {
         <NavLink className='tab' to='/SearchResult'>Search Result</NavLink>
         <NavLink className='tab' to='/ConfirmPickup'>Confirm Pickup</NavLink>
         <NavLink className='tab' to='/SubmitRating'>Submit Rating</NavLink>
-        <NavLink className='tab' to='/SubmitRating'>Login</NavLink>
+        <NavLink className='tab' to='/Login'>Login</NavLink>
 
         <Route exact path='/SignUp' component={SignUpPage} />
+        <Route exact path='/Login' component={Login} />
         <Route exact path='/Phone1' component={Phone1} />
         <Route exact path='/Phone2' component={Phone2} />
         {/* <Route exact path='/PhoneNumber' component={PhoneNumber} /> */}

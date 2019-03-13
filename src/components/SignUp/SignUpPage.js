@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { UserContext } from './UserContext';
+import { UserContext } from '../UserContext';
 import styled from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -8,7 +8,7 @@ import {
 
 } from 'react-router-dom';
 import axios from 'axios';
-import './index.css';
+import '../../index.css';
 import { Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
 
 const Body = styled.div`
