@@ -97,8 +97,8 @@ const SignUpPage = props => {
 
       <div>
         <SignUpButtons>
-           <NavLink className = 'nav-link' to = '/'>Home</NavLink>
-           <NavLink to = '/'>Home</NavLink>
+           {/* <NavLink className = 'nav-link' to = '/'>Home</NavLink>
+           <NavLink to = '/'>Home</NavLink> */}
            <Button>SIGN IN </Button>
            <Button primary>SIGN UP</Button>
         </SignUpButtons>
