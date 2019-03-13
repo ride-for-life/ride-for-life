@@ -67,6 +67,11 @@ export class CurrentLocation extends React.Component {
     } else {
         console.log(response); 
         console.log(response.rows);
+      let shortestRoute = response.rows.map(dest => dest.elements) // get all routes
+          .reduce((a, b) => a + b) // merge routes into single array
+          .reduce((min, cur) => min.duration.value <= cur.duration.value ? min : cur); // min duration
+      // shortestRoute = { distance { text value } duration { text value } status}
+      console.log("shortest route:", shortestRoute);
         //console.log(response.rows[1].elements[0].duration);
       // var originList = response.originAddresses;
       // var destinationList = response.destinationAddresses;
