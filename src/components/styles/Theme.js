@@ -9,3 +9,5 @@ export const colors = {
     evening: "#555869",
     black: "#000000",
 }
+
+export const fontFamily = "Gibson, Helvetica, Arial, sans-serif";
