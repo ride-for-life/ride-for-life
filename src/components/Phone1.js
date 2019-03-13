@@ -8,7 +8,7 @@ const title = 'Are you a:'
 
 const header = {
     width: '100%',
-    marginLeft: '24px'
+    marginLeft: '24px',
 }
 
 const all = {
