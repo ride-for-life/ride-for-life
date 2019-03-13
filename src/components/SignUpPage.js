@@ -3,39 +3,31 @@ import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
 import styled from 'styled-components';
 import {BrowserRouter as Router, NavLink, Link, Route} from 'react-router-dom';
-
-// import './index.css';
+import { Button, ContinueButton } from './styles/KeyCaps.js';
+import { colors } from './styles/Theme.js';
 
 const Body = styled.div`
-
-// width: 559pt;
-// margin-right: 50%;
-width: 550pt;
-display: flex;
- margin: 0 auto;
- margin-top: 4%;
-//  margin-right: 30%;\
-border: solid grey;
-
+  overflow: hidden;
+  position: relative;
 `;
 
-
-
-
-const Button = styled.button`
-    background: ${props => props.primary ? "#4C6A2D" : "white"};
-    color: ${props => props.primary ? "white" : "#78849E"};
-    font-size: 15pt;
-    text-align: center;
-    height: 52pt;
-    width: 100pt;
-    margin: 20px 0;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    // font-family: Montserrat;
-
+const Container = styled.div`
+  width: 800px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 4%;
+  flex-direction: column;
+   &:before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 100%;
+    background: ${colors.forest};
+    z-index: -1;
+  }
 `;
 
 const SignUpButtons = styled.div`
@@ -57,9 +49,15 @@ const Inputs = styled.div`
   flex-direction: column;
 `;
 
+// TODO: Create div wrapper to house an after with the box shadow with a z index
+// such that is under the inputs and under the circle.
 const Input = styled.input`
-  height: 75pt;
-  width: 75%;
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  box-shadow: 0 5px 10px ${colors.turbulence};
+  color: ${colors.thunderhead};
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
@@ -68,24 +66,8 @@ const Input = styled.input`
   font-size: 18pt;
   font-weight: 600;
   color: #78849E;
-  font-color: green;
   text-align: left;
   padding-left: 10%;
-`;
-
-const ContinueButton = styled.button`
-  height: 75pt;
-  width: 85%;
-  display: flex;
-  background: #A39280;
-  border: solid #A39280;
-  justify-content: center;
-  margin: 0 auto;
-  border-radius: 20px;
-  font-size: 15pt;
-  font-weight: 600;
-  color: white;
-  font-color: green;
 `;
 
 const SignUpPage = props => {
@@ -95,19 +77,18 @@ const SignUpPage = props => {
   return (
     <Body>
 
-      <div>
+      <Container>
         <SignUpButtons>
            <NavLink className = 'nav-link' to = '/'>Home</NavLink>
            <NavLink to = '/'>Home</NavLink>
-           <Button>SIGN IN </Button>
-           <Button primary>SIGN UP</Button>
+           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
+           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
 
 
            <form /*onSubmit = {this.addSmurf}*/>
            <Inputs>
-             <Input  style = {{color: "green"}}
-                     type="text"
+             <Input type="text"
                      name="name"
                     //  value={this.state.name}
                     //  onChange={this.handleChanges}
@@ -138,7 +119,7 @@ const SignUpPage = props => {
                </Inputs>
             </form>
 
-      </div>
+      </Container>
     </Body>
   );
 };
