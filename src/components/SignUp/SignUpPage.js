@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
+import { colors } from '../styles/Theme.js';
 import {
   BrowserRouter as Router,
   NavLink, Link,
@@ -12,6 +13,7 @@ import '../../index.css';
 import { Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
 
 const Body = styled.div`
+<<<<<<< 000d848b544df41ca839402f08b1ab2f8c2c3471
  width: 559pt;
  margin-right: 50%;
 width: 550pt;
@@ -20,8 +22,31 @@ display: flex;
  margin-top: 4%;
 margin-right: 30%;
 border: solid grey;
+=======
+  overflow: hidden;
+  position: relative;
+>>>>>>> Fix signup styling
 `;
 
+const Container = styled.div`
+  width: 800px;
+  max-width: 100%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 4%;
+  flex-direction: column;
+   &:before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 100%;
+    background: ${colors.forest};
+    z-index: -1;
+  }
+`;
 
 
 const SignUpPage = props => {
@@ -44,13 +69,14 @@ const SignUpPage = props => {
 
   return (
     <Body>
+      <Container>
       {result}
       <div>
         <SignUpButtons>
            {/* <NavLink className = 'nav-link' to = '/'>Home</NavLink>
            <NavLink to = '/'>Home</NavLink> */}
-           <Button>SIGN IN </Button>
-           <Button primary>SIGN UP</Button>
+           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
+           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
 
 
@@ -93,6 +119,7 @@ const SignUpPage = props => {
             </form>
 
       </div>
+      </Container>
     </Body>
   );
 };

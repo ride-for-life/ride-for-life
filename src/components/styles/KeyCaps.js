@@ -26,6 +26,7 @@ export const Button = styled.button`
 `;
 
 export const SignUpButtons = styled.div`
+  max-width: 100%;
   height: 44pt;
   width: 550pt;
   display: flex;
