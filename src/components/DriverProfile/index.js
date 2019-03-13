@@ -6,40 +6,39 @@ import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
 import { renderComponent } from "recompose";
 
-class DriverProfile extends React.Component {
-    
-        state = {
-            drivers: []
-        }
-    
+const DriverProfile = () => {
 
-    componentDidMount() {
-        axios.get('https://rideforlife.herokuapp.com/api/drivers/#{driver_id}')
-            .then(res => {this.setState({ drivers: res.data })
-            })
-            .catch(err => {console.log(err)
-            })
-        }
+   const [result, setResult] = useState({});
+   const drivers = result;
+   const driver = drivers.firstname
+
+//    JSON.stringify(drivers)
+    
+useEffect(
+        () => {
+        const axiosGet = async () => {
+        const id = 1;
+        const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${id}`)
+        setResult(res.data);
+        };
+        axiosGet();
+        },
+        []
+    );
         
-    render() {
-        const drivers = this.state.drivers
-        const driver = drivers.filter(driver => driver.driver_id === 1)
-        console.log(driver)
-        
-        return (
-            <div>
-                {console.log(drivers)}
-                <PageContainer2>
-                <DriverName driver={driver}/>
-                <PageContainer>
-                <DriverStats />
-                <DriverBio />
-                </PageContainer>
-                </PageContainer2>
-                {JSON.stringify(drivers)}
-            </div>
-        )
-    }
+return (
+    <div>
+        {console.log(drivers)}
+        <PageContainer2>
+        <DriverName driver={driver}/>
+        <PageContainer>
+        <DriverStats />
+        <DriverBio />
+        </PageContainer>
+        </PageContainer2>
+        {JSON.stringify(drivers)}
+    </div>
+    )
 };
 
 export default DriverProfile;
@@ -51,16 +50,6 @@ export default DriverProfile;
 // const [click, setClick] = useState(0);
 // const [result, setResult] = useState("Awaiting results?");
 
-// useEffect(
-// () => {
-// const axiosGet = async () => {
-// const data = await axios.get("https://rideforlife.herokuapp.com/");
-// setResult(JSON.stringify(data));
-// };
-// axiosGet();
-// },
-// [click] //turn this into an empty array so it doesn’t keep running
-// );
 
 // return (
 // <div>
