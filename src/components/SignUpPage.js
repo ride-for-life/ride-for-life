@@ -79,10 +79,17 @@ const SignUpPage = props => {
 
       <Container>
         <SignUpButtons>
+<<<<<<< bb7b67ffe97e9214226c976bd4b3e311d2b9cc46
            <NavLink className = 'nav-link' to = '/'>Home</NavLink>
            <NavLink to = '/'>Home</NavLink>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
+=======
+           {/* <NavLink className = 'nav-link' to = '/'>Home</NavLink>
+           <NavLink to = '/'>Home</NavLink> */}
+           <Button>SIGN IN </Button>
+           <Button primary>SIGN UP</Button>
+>>>>>>> maps working
         </SignUpButtons>
 
 

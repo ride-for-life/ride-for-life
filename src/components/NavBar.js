@@ -7,6 +7,7 @@ import Phone2 from "./Phone2";
 import Login from "./Login";
 import PhoneNumber from "./PhoneNumber";
 import DriverProfile from "./DriverProfile";
+import MapContainer from "./maps/MapContainer"
 
 const NavBar = () => {
  return (
@@ -48,7 +49,12 @@ const NavBar = () => {
      <Route exact path="/Phone2" component={Phone2} />
      <Route exact path="/DriverProfile" component={DriverProfile} />
 
+<<<<<<< bb7b67ffe97e9214226c976bd4b3e311d2b9cc46
      {/* <Route exact path='/PhoneNumber' component={PhoneNumber} /> */}
+=======
+     <Route exact path='/PhoneNumber' component={PhoneNumber} />
+     <Route exact path='/SearchResult' component = {MapContainer} />
+>>>>>>> maps working
    </div>
  );
 };
