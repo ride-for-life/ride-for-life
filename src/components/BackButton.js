@@ -15,7 +15,7 @@ const BackButton = () => {
         <button style={button}>
         BackButton
         </button>
-    )
-}
+    );
+};
 
-export default BackButton
+export default BackButton;

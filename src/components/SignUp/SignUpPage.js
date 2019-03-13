@@ -12,13 +12,13 @@ import '../../index.css';
 import { Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
 
 const Body = styled.div`
-// width: 559pt;
-// margin-right: 50%;
+ width: 559pt;
+ margin-right: 50%;
 width: 550pt;
 display: flex;
  margin: 0 auto;
  margin-top: 4%;
-//  margin-right: 30%;\
+margin-right: 30%;
 border: solid grey;
 `;
 
@@ -35,7 +35,7 @@ const SignUpPage = props => {
 
   const driverSignUp = event => {
     event.preventDefault();
-    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', { firstname: "1", lastname: "1", username: "1", password: "1", phone: "1", vehicle_type: "bodaboda" })
+    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', { firstname: "1", lastname: "1", username: "1", password: "1", email: "1", phone: "1", vehicle_type: "bodaboda" })
      .then(data => setResult(JSON.stringify(data)))
      .catch(error => setResult(JSON.stringify(error)))
   };
