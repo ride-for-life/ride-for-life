@@ -34,10 +34,10 @@ export const SignUpButtons = styled.div`
 
 export const ContinueButton = styled(Button).attrs(({ color, background }) => ({
     color: color || colors.white,
-    background: background || colors.forest,
+    background: background || colors.sand,
 }))`
-  height: 75pt;
-  width: 85%;
+  height: 80px;
+  width: 100%;
   margin: 0 auto;
 `
 
