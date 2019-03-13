@@ -9,7 +9,7 @@ const DriverName = props => {
      <ul>
         {JSON.stringify(props)}
     </ul>
-        {props.driver.lastname}
+        {/* {props.driver.lastname} */}
    </div>
  );
 };
