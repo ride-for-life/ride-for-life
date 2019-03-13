@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import SignUpPage from "./SignUpPage";
+import SignUpPage from "./SignUp/SignUpPage";
 import { Route, Link, NavLink } from "react-router-dom";
 import Phone1 from "./Phone1";
 import Phone2 from "./Phone2";
@@ -48,7 +48,6 @@ const NavBar = () => {
      <Route exact path="/Phone1" component={Phone1} />
      <Route exact path="/Phone2" component={Phone2} />
      <Route exact path="/DriverProfile" component={DriverProfile} />
-
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
      <Route exact path='/SearchResult' component = {MapContainer} />
    </div>
