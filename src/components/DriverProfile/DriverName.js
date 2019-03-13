@@ -2,14 +2,11 @@ import React from "react";
 
 
 const DriverName = props => {
-    console.log(props.driver)
     return (
    <div>
-     <h1>Martin Makuza</h1>
-     <ul>
-        {JSON.stringify(props)}
-    </ul>
-        {/* {props.driver.lastname} */}
+     <img src='' />
+     <h1>Name: {props.name}</h1>
+     <h2>Location: {props.location}</h2>
    </div>
  );
 };

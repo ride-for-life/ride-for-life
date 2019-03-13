@@ -5,9 +5,9 @@ export const PageContainer = styled.section`
   color: white;
 `;
 
-export const PageContainer2 = styled.section`
+export const PageContainerGrey = styled.section`
   background: #F7F7FA;
   color: #454F63;
   height: 812px;
-  width: 375px
+  width: 375px;
 `
