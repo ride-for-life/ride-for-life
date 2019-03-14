@@ -4,7 +4,7 @@ import React from "react";
 const DriverName = props => {
     return (
    <div>
-     <img src='' />
+     <img src='' alt={props.name} />
      <h1>Name: {props.name}</h1>
      <h2>Location: {props.location}</h2>
    </div>

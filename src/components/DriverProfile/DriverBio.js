@@ -9,14 +9,13 @@ const DriverBio = props => {
    <DriverBioDiv>
      <div className="caret">V</div>
      <div className="driver-heading">
-         <img />
+         <img src='' alt={props.name} />
          <div>
              <h3>{props.name}</h3>
              <p>Driving for 2 years</p>
          </div>
      </div>
-     <p>I am trained in defensive driving and drive the ambulances.
-       I hope to help you by providing a fair price and responding quickly
+     <p>{props.myBio}
      </p>
      <div className="driver-footer">
      <div><Share /></div> <div>39<Comment />    125<Heart /></div>

@@ -6,7 +6,7 @@ const box={
 }
 
 const DriverStats = props => {
-  const driver = props.driver;
+
   return (
    <div>
       <div style={box}>

@@ -48,13 +48,14 @@ const Login = props => {
   const [name, setName] = useState("cool?");
   const [pass, setPass] = useState("awesome!");
   const [result, setResult] = useState("Awaiting results?");
-  let { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
+  const id = 5;
 
  useEffect(
     () => {
       const axiosGet = async () => {
         const data = await axios.get(
-          `https://rideforlife.herokuapp.com/api/drivers`
+          `https://rideforlife.herokuapp.com/api/drivers/${id}`
         );
         console.log(data);
       };

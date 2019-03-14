@@ -25,9 +25,9 @@ import { UserContext } from '../UserContext';
 
 
 const PhoneKey = props => {
-  let { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
 
-  let numPush = num => () => dispatch({ type: "numPush", payload: num });
+  const numPush = num => () => dispatch({ type: "numPush", payload: num });
 
   return <KeyCap onClick={numPush(props.keyNum)}>{props.keyNum}</KeyCap>
 };
