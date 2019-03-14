@@ -3,6 +3,7 @@ import axios from 'axios';
 import { authxios, imgxios } from '../auth/';
 import { UserContext } from '../UserContext';
 import { Input, Inputs } from '../styles';
+
 import DriverCarousel from '../maps/DriverCarousel';
 
 
@@ -18,7 +19,7 @@ const EditProfile = props => {
   const { state, dispatch } = useContext(UserContext);
   const [ selfie, setSelfie ] = useState(null);
   const [ bio, setBio ] = useState('');
-  const [ imgurHash, setImgurHash] = useState('');
+  const [ imgurLink, setImgurLink] = useState('');
   const id = 1;
 
 
@@ -44,11 +45,11 @@ const EditProfile = props => {
   const fileUpload = () => {
     const imgData = new FormData();
     imgData.append('image', selfie, selfie.name);
-    imgxios(clientID).post('https://api.imgur.com/3/image', imgData)
+    imgxios('').post('https://api.imgur.com/3/image', imgData)
       .then(res => {
         console.log(res);
-        setImgurHash(`${res.data.id}.jpg`);
-        dispatch({ type: "imageUpdate", payload: res.data.id })
+        setImgurLink(`${res.data.link}`);
+        dispatch({ type: "imageUpdate", payload: res.data.link })
       })
       .catch(err => {
         console.log(err)});
@@ -56,16 +57,16 @@ const EditProfile = props => {
 
   useEffect(
     () => {
-      if (imgurHash !== '') {
+      if (imgurLink !== '') {
       const axiosGet = async () => {
         const changes = {
-          vehicle_type: `https://i.imgur.com/${imgurHash}`
+          vehicle_type: `https://i.imgur.com/${imgurLink}`
         };
         const res = await authxios(state.reactiveToken).put(`https://rideforlife.herokuapp.com/api/drivers/${id}`, changes);
       };
       axiosGet();
     }},
-    [imgurHash]
+    [imgurLink]
   ); // Why am I using useEffect here? Just refactor this to a function, you silly goose.
 
   const logTest = event => {
@@ -104,8 +105,9 @@ const EditProfile = props => {
       <button onClick={makeRide}>Test Ride</button>
 
       <form onSubmit={editProfile}>
+      {imgurLink && <img src={`https://i.imgur.com/${imgurLink}`} />}
       <DriverCarousel />
-      {imgurHash && <img src={`https://i.imgur.com/${imgurHash}`} />}
+
       <Inputs>
         <Input  style = {{color: "green"}}
                 type="text"

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PhoneDiv, colors } from '../styles';
 import axios from 'axios';
 import NumberDisplay from './NumberDisplay';
 import KeyPad from './KeyPad';
 import TransitionButton from '../TransitionButton';
 import styled from 'styled-components';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 // Page should include the following elements:
 // The keypad
@@ -23,20 +25,26 @@ const Body = styled.div`
     background: ${ colors.dusk };
 `
 
-const PhoneNumber = props => {
+class PhoneNumber extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
+    };
+  };
+
+  render() {
   return (
       <Body>
-          <PhoneDiv style={{paddingBottom: '0'}}>
-              <h1 style={{color: 'white'}}>Enter your phone number:</h1>
-              <NumberDisplay />
-              {/* Need the transition button here.
-                  And it needs to not work unless a number is in. */}
+        <PhoneInput
+          placeholder="Enter phone number"
+            value={ this.state.phone }
+            onChange={ phone => this.setState({ phone }) } />
               <TransitionButton link='/PhoneNumber' route='somecomponent' text='NEXT STEP' />
               <KeyPad />
-          </PhoneDiv>
       </Body>
   );
+};
 };
 
 export default PhoneNumber;

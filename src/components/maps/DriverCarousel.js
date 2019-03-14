@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -30,15 +31,26 @@ const DriverCarousel = props => {
 
 const carousel = drivers && drivers.map(driver => {
    return (
-     <QuickStyle key={drivers.driver_id}>
-     <NavLink to={`/profile/${driver.driver_id}`}>{JSON.stringify(driver.firstname)}</NavLink>
-     </QuickStyle>
- );
+
+        <Slide>
+        <NavLink to={`/profile/${driver.driver_id}`}>{JSON.stringify(driver.firstname)}</NavLink>
+        </Slide>
+
+   );
  });
+
+
 
     return (
       <div>
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={125}
+        totalSlides={3}>
+        <Slider>
       {carousel}
+      </Slider>
+      </CarouselProvider>
       </div>
   );
 };
