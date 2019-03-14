@@ -2,35 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import { UserContext } from './UserContext';
-import { WideCap, Input, Inputs, colors } from "./styles";
+import { WideCap, Input, Inputs, colors, NavStyle, FormContainer } from "./styles";
 import styled from 'styled-components';
 
 const Body = styled.div`
   overflow: hidden;
   position: relative;
   min-height: 100vh;
-`;
-
-const Container = styled.div`
-  width: 800px;
-  max-width: 100%;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 4%;
-  flex-direction: column;
-  justify-content: center;
-  height: 70vh;
-   &:before {
-    content: "";
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    width: 80vh;
-    height: 80vh;
-    border-radius: 100%;
-    background: ${colors.forest};
-    z-index: -1;
-  }
 `;
 
 const Form = styled.form`
@@ -82,16 +60,17 @@ const Login = props => {
 
  return (
    <Body>
-     <Container>
+     <FormContainer style={{paddingTop: "30%"}}>
+           <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
    <Form>
     <Input type="text" onChange={event => setName(event.target.value)} value={name} />
-    <Input type="text" onChange={event => setPass(event.target.value)} value={pass} />
+    <Input type="password" onChange={event => setPass(event.target.value)} value={pass} />
     <WideCap onClick={driverLogin} background={colors.thunderhead}>LOGIN</WideCap>
    </Form>
     <p>{name}</p>
     <p>{pass}</p>
     <p>{result}</p>
-     </Container>
+     </FormContainer>
    </Body>
  );
 };

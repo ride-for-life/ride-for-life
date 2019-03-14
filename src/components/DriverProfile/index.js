@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { DriverDiv, colors } from "../styles";
+import { DriverDiv, colors, NavStyle } from "../styles";
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
-import { NavLink } from "react-router-dom";
 
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
@@ -44,7 +43,7 @@ const DriverProfile = () => {
 return (
     <Body>
       <DriverDiv>
-        <NavLink to='/'>Home</NavLink>
+        <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
         <DriverName name={drivername} location={location}/>
 
         <DriverStats driver={driver} rides={rides} reviews={reviews}/>
