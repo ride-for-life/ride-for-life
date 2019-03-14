@@ -7,6 +7,7 @@ import Phone2 from "./Phone2";
 import Login from "./Login";
 import PhoneNumber from "./PhoneNumber";
 import DriverProfile from "./DriverProfile";
+import DriverProfile1 from "./DriverProfile1";
 import MapContainer from "./maps/MapContainer"
 import SubmitRating from './Review/';
 
@@ -50,6 +51,7 @@ const NavBar = () => {
      <Route exact path="/Phone1" component={Phone1} />
      <Route exact path="/Phone2" component={Phone2} />
      <Route exact path="/DriverProfile" component={DriverProfile} />
+     <Route exact path="/DriverProfile1" component={DriverProfile1} />
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
      <Route exact path='/SearchResult' component = {MapContainer} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
