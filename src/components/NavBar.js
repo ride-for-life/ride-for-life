@@ -10,6 +10,7 @@ import DriverProfile from "./DriverProfile";
 import DriverProfile1 from "./DriverProfile1";
 import MapContainer from "./maps/MapContainer"
 import SubmitRating from './Review/';
+import UserCreate from './UserCreate';
 
 
 const NavBar = () => {
@@ -45,7 +46,13 @@ const NavBar = () => {
      <NavLink className="tab" to="/SubmitRating">
        Submit Rating
      </NavLink>
-     
+     <NavLink className="tab" to="/SubmitRating">
+       Submit Rating
+     </NavLink>
+     <NavLink className="tab" to="/UserCreate">
+       User Login
+     </NavLink>
+
 
      <Route exact path="/SignUp" component={SignUpPage} />
      <Route exact path="/Login" component={Login} />
@@ -56,7 +63,8 @@ const NavBar = () => {
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
      <Route exact path='/SearchResult' component = {MapContainer} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
-   
+     <Route exact path='/UserCreate' component={UserCreate} />
+
    </div>
  );
 };
