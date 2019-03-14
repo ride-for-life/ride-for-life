@@ -41,6 +41,7 @@ const Container = styled.div`
 const SignUpPage = props => {
   const [ firstName, setFirstName ] = useState("");
   const [ lastName, setLastName ] = useState("");
+  const [ pass, setPass ] = useState("");
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
   const [ result, setResult ] = useState("");
@@ -49,7 +50,19 @@ const SignUpPage = props => {
 
   const driverSignUp = event => {
     event.preventDefault();
-    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', { firstname: "1", lastname: "1", username: "1", password: "1", phone: "1", vehicle_type: "bodaboda" })
+    const phoneContext = state.phoneNum.join("");
+    const parsedPrice = parseInt(price);
+    const registrationWrapper = {
+      firstname: firstName,
+      lastname: lastName,
+      username: `${firstName}${lastName}${phoneContext}`,
+      phone: phoneContext,
+      email: phoneContext,
+      password: pass,
+      price: parsedPrice,
+      vehicle_type: "test"
+    };
+    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationWrapper)
      .then(data => setResult(JSON.stringify(data)))
      .catch(error => setResult(JSON.stringify(error)))
   };
@@ -62,8 +75,9 @@ const SignUpPage = props => {
       {result}
       <div>
         <SignUpButtons>
-           {/* <NavLink className = 'nav-link' to = '/'>Home</NavLink>
-           <NavLink to = '/'>Home</NavLink> */}
+           <NavLink className = 'nav-link' to = '/'>Home</NavLink>
+           <NavLink to = '/'>Home</NavLink>
+
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
@@ -88,6 +102,13 @@ const SignUpPage = props => {
                       onChange={event => setLastName(event.target.value)}
                       placeholder="Last?"
                />
+               <Input
+                      type="text"
+                      name="pass"
+                      onChange={event => setPass(event.target.value)}
+                      value={pass}
+                      placeholder="Password?"
+               />
               <Input
                      type="text"
                      name="location"
@@ -100,7 +121,7 @@ const SignUpPage = props => {
                      name="price"
                      onChange={event => setPrice(event.target.value)}
                      value={price}
-                     placeholder="Price"
+                     placeholder="Price?"
               />
 
               <ContinueButton> CONTINUE </ContinueButton>
