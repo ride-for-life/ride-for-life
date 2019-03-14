@@ -27,6 +27,9 @@ const NavBar = () => {
      <NavLink className="tab" to="/SignUp">
        Sign Up
      </NavLink>
+     <NavLink className="tab" to="/Login">
+       Login
+     </NavLink>
      <NavLink className="tab" to="/DriverProfile">
        Driver Profile
      </NavLink>
@@ -42,9 +45,7 @@ const NavBar = () => {
      <NavLink className="tab" to="/SubmitRating">
        Submit Rating
      </NavLink>
-     <NavLink className="tab" to="/Login">
-       Login
-     </NavLink>
+     
 
      <Route exact path="/SignUp" component={SignUpPage} />
      <Route exact path="/Login" component={Login} />
