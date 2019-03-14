@@ -4,6 +4,8 @@ import { DriverDiv, colors } from "../styles";
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
+import { NavLink } from "react-router-dom";
+
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
 
@@ -36,7 +38,7 @@ const DriverProfile = () => {
 return (
     <Body>
       <DriverDiv>
-
+        <NavLink to='/'>Home</NavLink>
         <DriverName name={drivername} location={location}/>
         <DriverStats driver={driver} />
         <DriverBio name={drivername} myBio={bioString} />

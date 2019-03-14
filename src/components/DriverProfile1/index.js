@@ -4,6 +4,8 @@ import { PageContainerGrey, DriverStatsDiv, DriverBioDiv } from "../styles";
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
+import {NavLink} from 'react-router-dom';
+
 import { renderComponent } from "recompose";
 
 const DriverProfile1 = () => {
@@ -15,7 +17,7 @@ const DriverProfile1 = () => {
 useEffect(
         () => {
         const axiosGet = async () => {
-        const id = 7;
+        const id = 2;
         const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${id}`)
         setDriver(res.data);
         };
@@ -26,7 +28,7 @@ useEffect(
 
 return (
     <div>
-        {JSON.stringify(driver)}
+        <NavLink to = '/'>Home</NavLink>
         <PageContainerGrey>
         <DriverName name={drivername} location={location}/>
         <DriverStatsDiv>
@@ -36,7 +38,6 @@ return (
         <DriverBio name={drivername} />
         </DriverBioDiv>
         </PageContainerGrey>
-        {console.log(driver)}
     </div>
     )
 };
