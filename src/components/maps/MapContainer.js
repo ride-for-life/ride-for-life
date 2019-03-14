@@ -7,7 +7,7 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 
 // import MyGreatPlace from './my_great_place.jsx';
 // import {greatPlaceStyle} from './my_great_place_styles.js';
-import { APIkey } from '../.google.js'; 
+ 
 import CurrentLocation from './Map';
 
 
@@ -54,8 +54,8 @@ export class MapContainer extends Component {
     activeMarker: {},
     selectedPlace: {}
   }
-  
-  onMarkerClick = (props, marker, e) => 
+
+  onMarkerClick = (props, marker, e) =>
     this.setState ({
       selectedPlace: props,
       activeMarker: marker,
@@ -85,7 +85,7 @@ export class MapContainer extends Component {
         >
           {/* <div>
             <h4>{this.state.selectedPlace.name}</h4>
-            
+
           </div> */}
         </InfoWindow>
         <Marker  onClick={this.onMarkerClick}
@@ -94,17 +94,17 @@ export class MapContainer extends Component {
                //text = {'There he is'}
         />
 
-        <InfoWindow 
+        <InfoWindow
                 marker  = {this.state.activeMarker}
                 visible = {this.state.showingInfoWindow}
-                onClose = {this.onClose} 
+                onClose = {this.onClose}
                 content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
-      
+
 
         ><div><h2>{this.state.selectedPlace.name}</h2></div>
         </InfoWindow>
       </CurrentLocation>
-      
+
 
 </div>
 
