@@ -21,17 +21,15 @@ const Body = styled.div`
 
 const Phone1 = () => {
     return (
-        <Body>
-            <PhoneDiv>
-                <BackButton />
-                <HeadText>{title}</HeadText>
-                <ButtonContainer>
-                    <TransitionButton link='/driver' text='DRIVER' />
-                    <TransitionButton link='/mom-to-be' route='' text='PREGNANT MOM' />
-                    <TransitionButton link='/caregiver' route='' text='CAREGIVER' />
-                </ButtonContainer>
-            </PhoneDiv>
-        </Body>
+        <PhoneDiv>
+            <BackButton />
+            <HeadText>{title}</HeadText>
+            <ButtonContainer>
+                <TransitionButton link='/sign-up' text='DRIVER' />
+                <TransitionButton link='/mom-to-be' route='' text='PREGNANT MOM' />
+                <TransitionButton link='/caregiver' route='' text='CAREGIVER' />
+            </ButtonContainer>
+        </PhoneDiv>
     )
 }
 
