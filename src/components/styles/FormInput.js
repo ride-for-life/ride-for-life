@@ -50,3 +50,26 @@ export const Input = styled.input`
 //   text-align: left;
 //   padding-left: 10%;
 // `;
+
+export const FormContainer = styled.div`
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 4%;
+  padding: 0 5%;
+  flex-direction: column;
+  box-sizing: border-box;
+   &:before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 100%;
+    background: ${colors.forest};
+    z-index: -1;
+  }
+`;
