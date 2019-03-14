@@ -115,7 +115,7 @@ const SignUpPage = props => {
                     //  onChange={this.handleChanges}
                      placeholder="Upload Photo"
               />
-              <ContinueButton> CONTINUE </ContinueButton>
+              <ContinueButton> Continue </ContinueButton>
                </Inputs>
             </form>
 
