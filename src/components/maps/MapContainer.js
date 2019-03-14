@@ -88,6 +88,8 @@ export class MapContainer extends Component {
   render() {
     return (
       <div>
+
+        <button className = "Your-location">Your Location</button>
            { /** Map loaded and centered on browser's current location **/}
       <CurrentLocation centerAroundCurrentLocation = {true} google={this.props.google} drivers = {this.props.drivers}   >
  
