@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { PageContainerGrey, StatsDiv, BioDiv } from "../styles";
+import { DriverDiv, colors } from "../styles";
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
 import { renderComponent } from "recompose";
 import EditProfile from './EditProfile';
+import styled from 'styled-components';
+
+const Body = styled.div`
+  width: 100%;
+  background: ${colors.cloud};
+  background-image: linear-gradient(${colors.white}, ${colors.thunderhead + '09'})
+`
 
 const DriverProfile = () => {
 
@@ -26,21 +33,17 @@ useEffect(
     );
 
 return (
-    <div>
-        {JSON.stringify(driver)}
-        <EditProfile />
-        <PageContainerGrey>
-        <DriverName name={drivername} location={location}/>
-        <StatsDiv>
-        <DriverStats driver={driver} />
-        </StatsDiv>
-        <BioDiv>
-        <DriverBio name={drivername} />
-        </BioDiv>
-        </PageContainerGrey>
-        {console.log(driver)}
-    </div>
-    )
+    <Body>
+    <DriverDiv>
+    {JSON.stringify(driver)}
+    <EditProfile />
+    <DriverName name={drivername} location={location}/>
+    <DriverStats driver={driver} />
+    <DriverBio name={drivername} />
+    {console.log(driver)}
+    </DriverDiv>
+    </Body>
+)
 };
 
 export default DriverProfile;
