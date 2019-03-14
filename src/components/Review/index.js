@@ -2,9 +2,15 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import axios from 'axios';
 import { ReactComponent as StarSVG} from "./star.svg";
-import { colors, WideCap, fontFamily } from "../styles";
+import { colors, WideCap, fontFamily, DriverDiv, NavStyle } from "../styles";
 import styled from 'styled-components';
 import { authxios } from '../auth';
+
+const Body = styled.div`
+  width: 100%;
+  background: ${colors.cloud};
+  background-image: linear-gradient(${colors.white}, ${colors.thunderhead + '09'})
+`
 
 const Star = styled(StarSVG)`
   width: 40px;
@@ -109,6 +115,9 @@ const SubmitRating = props => {
 
 // so I can get around the ugly no-image display thing here by setting an && logic on top of the img, right? All I have to do is make sure that if the prop I get is an empty string, I return mu.
   return (
+      <Body>
+      <DriverDiv>
+        <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
       <Container>
       <div className="review-driver">
         <img src='' alt={props.name} />
@@ -129,6 +138,8 @@ const SubmitRating = props => {
       <WideCap background={colors.antimatter}>SUBMIT RATING</WideCap>
     </Form>
       </Container>
+      </DriverDiv>
+      </Body>
   );
 
 };
