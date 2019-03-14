@@ -19,8 +19,8 @@ const Phone2 = () => {
             <BackButton />
             <HeadText>{title}</HeadText>
             <ButtonContainer>
-                <TransitionButton link='/request-ride' route='somecomponent' text='REQUEST RIDE' />
-                <TransitionButton link='/view-drivers' route='somecomponent' text='VIEW DRIVERS' />
+                <TransitionButton link='/confirm-pickup' route='somecomponent' text='REQUEST RIDE' />
+                <TransitionButton link='/search-result' route='somecomponent' text='VIEW DRIVERS' />
             </ButtonContainer>
         </PhoneDiv>
     )

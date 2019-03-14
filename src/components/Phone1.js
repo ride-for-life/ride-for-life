@@ -20,7 +20,7 @@ const Phone1 = () => {
             <BackButton />
             <HeadText>{title}</HeadText>
             <ButtonContainer>
-                <TransitionButton link='/driver' text='DRIVER' />
+                <TransitionButton link='/sign-up' text='DRIVER' />
                 <TransitionButton link='/mom-to-be' route='' text='PREGNANT MOM' />
                 <TransitionButton link='/caregiver' route='' text='CAREGIVER' />
             </ButtonContainer>

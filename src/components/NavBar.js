@@ -15,14 +15,14 @@ import SubmitRating from './Review/';
 const NavBar = () => {
  return (
    <div>
+     <NavLink className="tab" to="/PhoneNumber">
+       Phone Number
+     </NavLink>
      <NavLink className="tab" to="/Phone1">
        Phone1
      </NavLink>
      <NavLink className="tab" to="/Phone2">
        Phone2
-     </NavLink>
-     <NavLink className="tab" to="/PhoneNumber">
-       Phone Number
      </NavLink>
      <NavLink className="tab" to="/SignUp">
        Sign Up
