@@ -62,15 +62,7 @@ const SignUpPage = props => {
       vehicle_type: "mu",
       location: location
     };
-    const registrationTester = {
-      firstname: 'Cool',
-      lastname: 'Guy',
-
-      password: 'password',
-      price: 100,
-      vehicle_type: "test"
-    };
-    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationTester)
+    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationWrapper)
      .then(res => {
        setResult(JSON.stringify(res));
        dispatch({type: "loginSuccess", payload: res.data.token });
