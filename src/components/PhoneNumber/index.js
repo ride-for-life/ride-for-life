@@ -27,6 +27,9 @@ const Body = styled.div`
     min-height: 100vh;
     .react-phone-number-input {
         margin-left: -35px;
+        svg {
+            fill: white;
+        }
         input {
             height: 80px;
             width: 100%;
