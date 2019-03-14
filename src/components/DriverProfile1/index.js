@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { PageContainerGrey, DriverStatsDiv, DriverBioDiv, DriverDiv, colors } from "../styles";
+import { PageContainerGrey, DriverStatsDiv, DriverBioDiv, DriverDiv, colors, NavStyle } from "../styles";
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats";
 import DriverReview from "./DriverReview";
 import DriverBio from "./DriverBio"
-import {NavLink} from 'react-router-dom';
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
 
@@ -47,7 +46,7 @@ useEffect(
 return (
     <Body>
     <DriverDiv>
-        <NavLink to = '/'>Home</NavLink>
+        <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
         <DriverName name={drivername} location={location}/>
         <DriverStats driver={driver} rides={rides} income={income} reviews={reviews}/>
     {/*<DriverBio name={drivername} myBio={bioString} reviews={reviews} avgRating={avgRating}/>*/}
