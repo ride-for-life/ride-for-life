@@ -16,10 +16,15 @@ const Body = styled.div`
 const DriverProfile = () => {
 
    const [driver, setDriver] = useState({});
+    console.log(driver);
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location;
-   const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : ''
-
+   const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : 'This driver does not yet have a biography'; // FIXME: not real
+   const driverFor = driver.driver_for || "New driver"; // FIXME: not real
+   const rides = driver.total_rides || "0";
+   const reviews = driver.reviews ? driver.reviews.length : 0;
+   const avgRating = (driver.reviews && driver.reviews.length > 0) ? (driver.reviews.reduce((acc, d) => acc + d.rating, 0) / driver.reviews.length) : 0;
+    
 
   useEffect(
     () => {
@@ -38,8 +43,8 @@ return (
       <DriverDiv>
 
         <DriverName name={drivername} location={location}/>
-        <DriverStats driver={driver} />
-        <DriverBio name={drivername} myBio={bioString} />
+        <DriverStats driver={driver} rides={rides} reviews={reviews}/>
+        <DriverBio name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating}/>
 
       </DriverDiv>
     </Body>

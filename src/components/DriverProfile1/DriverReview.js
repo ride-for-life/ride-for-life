@@ -11,23 +11,22 @@ const Star = styled(StarSVG)`
   }
 `
 
-const DriverBio = props => {
+const DriverReview = props => {
  return (
-   <DriverBioDiv>
-     <div className="caret">V</div>
+     <DriverBioDiv style={{marginBottom: "20px"}}>
      <div className="driver-heading">
          <img src='' alt={props.name} />
          <div>
              <h3>{props.name}</h3>
+     <p>{props.rating}
+   </p>
          </div>
      </div>
-     <p>{props.myBio}
-     </p>
+     <p>{props.content}</p>
      <div className="driver-footer">
-     <div><Share /></div> <div>{props.reviews}<Comment />    {props.avgRating}<Star /></div>
-     </div>
+     <div><Share /></div> </div>
    </DriverBioDiv>
  );
 };
 
-export default DriverBio;
+export default DriverReview;
