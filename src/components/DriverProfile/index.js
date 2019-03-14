@@ -40,11 +40,13 @@ const DriverProfile = () => {
     []
   );
 
+
 return (
     <Body>
       <DriverDiv>
         <NavLink to='/'>Home</NavLink>
         <DriverName name={drivername} location={location}/>
+
         <DriverStats driver={driver} rides={rides} reviews={reviews}/>
         <DriverBio name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating}/>
 

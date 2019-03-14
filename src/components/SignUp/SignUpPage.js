@@ -52,22 +52,21 @@ const SignUpPage = props => {
     event.preventDefault();
     const phoneContext = state.phoneNum.join("");
     const parsedPrice = parseInt(price);
-    // const registrationWrapper = {
-    //   firstname: firstName,
-    //   lastname: lastName,
-    //   username: bracedRand,
-    //   phone: phoneContext,
-    //   email: phoneContext,
-    //   password: pass,
-    //   price: parsedPrice,
-    //   vehicle_type: "test"
-    // };
-    const registrationTester = {
-      firstname: 'Cool',
-      lastname: 'Guy',
+    const registrationWrapper = {
+      firstname: firstName,
+      lastname: lastName,
       username: `__${Math.random().toString().slice(2,19)}__`,
       phone: `__${Math.random().toString().slice(2,19)}__`,
       email: `__${Math.random().toString().slice(2,19)}__`,
+      password: pass,
+      price: parsedPrice,
+      vehicle_type: "mu",
+      location: location
+    };
+    const registrationTester = {
+      firstname: 'Cool',
+      lastname: 'Guy',
+
       password: 'password',
       price: 100,
       vehicle_type: "test"
@@ -95,7 +94,6 @@ const SignUpPage = props => {
 
 
            <form onSubmit={driverSignUp}>
-            <ContinueButton>Pow!</ContinueButton>
            <Inputs>
              <Input  style = {{color: "green"}}
                      type="text"
