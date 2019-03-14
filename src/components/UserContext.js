@@ -7,6 +7,7 @@ const initState = {
   reactiveToken: ''
 };
 
+// set up logic for user updating
 
 const reducer = (state,action) => {
   switch (action.type) {
@@ -27,6 +28,8 @@ const reducer = (state,action) => {
     case "loginSuccess":
       console.log(action.payload);
       return { ...state, reactiveToken: action.payload }
+    case "imageUpdate":
+      console.log("Blah!");
     default:
       return state
   };

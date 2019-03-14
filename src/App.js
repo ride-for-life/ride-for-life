@@ -3,7 +3,6 @@ import ReactGoogleMapLoader from "react-google-maps-loader";
 import ReactGoogleMap from "react-google-map";
 import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
 import TransitionButton from './components/TransitionButton';
-import SignUpPage from './components/SignUpPage'
 import Login from './components/Login'
 import PhoneNumber from './components/PhoneNumber'
 import NavBar from './components/NavBar'
@@ -25,7 +24,7 @@ export default class App extends Component {
     };
   };
 
-    render() {  
+    render() {
       return (
         <div>
           <NavBar />
@@ -33,7 +32,6 @@ export default class App extends Component {
           <Route exact path='/info' component={Phone1} />
           <Route exact path='/mom-to-be' component={Phone2} />
           <Route exact path='/caregiver' component={Phone2} />
-          <Route exact path='/sign-up' component={SignUpPage} />
           <Route exact path='/sign-in' component={Login} />
           <Route exact path='/search-result' component={MapContainer} />
           <Route exact path='/submit-rating' component={SubmitRating} />

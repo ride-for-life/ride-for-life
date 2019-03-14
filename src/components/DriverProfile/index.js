@@ -5,7 +5,6 @@ import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
 import { renderComponent } from "recompose";
-import EditProfile from './EditProfile';
 import styled from 'styled-components';
 
 const Body = styled.div`
@@ -36,14 +35,13 @@ const DriverProfile = () => {
 
 return (
     <Body>
-    <DriverDiv>
-    {JSON.stringify(driver)}
-    <EditProfile />
-    <DriverName name={drivername} location={location}/>
-    <DriverStats driver={driver} />
-    <DriverBio name={drivername} myBio={bioString} />
-    {console.log(driver)}
-    </DriverDiv>
+      <DriverDiv>
+
+        <DriverName name={drivername} location={location}/>
+        <DriverStats driver={driver} />
+        <DriverBio name={drivername} myBio={bioString} />
+
+      </DriverDiv>
     </Body>
 )
 };

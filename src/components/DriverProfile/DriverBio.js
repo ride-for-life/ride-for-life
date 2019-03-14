@@ -12,7 +12,6 @@ const DriverBio = props => {
          <img src='' alt={props.name} />
          <div>
              <h3>{props.name}</h3>
-             <p>Driving for 2 years</p>
          </div>
      </div>
      <p>{props.myBio}

@@ -11,6 +11,17 @@ export const authxios = token => {
       }
   });
 };
+
+export const imgxios = (imgToken) => {
+
+  return axios.create({
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Client-ID ${imgToken}`
+      }
+  });
+};
+
 // From one of your Redux containers (components connected to the store), dispatch an action like so:
 //
 // Copy
