@@ -44,18 +44,18 @@ const Form = styled.form`
   }
 `;
 
-const Login = props => {
-  const [name, setName] = useState("cool?");
+const UserCreate = props => {
+  const [name, setName] = useState("userpage?");
   const [pass, setPass] = useState("awesome!");
   const [result, setResult] = useState("Awaiting results?");
   const { state, dispatch } = useContext(UserContext);
-  const id = 5;
+  const id = 1;
 
  useEffect(
     () => {
       const axiosGet = async () => {
         const data = await axios.get(
-          `https://rideforlife.herokuapp.com/api/drivers/${id}`
+          `https://rideforlife.herokuapp.com/api/users/`
         );
         console.log(data);
       };
@@ -64,10 +64,21 @@ const Login = props => {
     []
   );
 
- const driverLogin = (event) => {
+ const userLogs = (event) => {
    event.preventDefault();
-   const assembleQuery = { loginQuery: name , password:  pass  };
-   axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
+   console.log("started!");
+   const registrationTester = {
+     firstname: 'Cool',
+     lastname: 'Guy',
+     username: `__${Math.random().toString().slice(2,19)}__`,
+     phone: `__${Math.random().toString().slice(2,19)}__`,
+     email: `__${Math.random().toString().slice(2,19)}__`,
+     password: 'password',
+     price: 100,
+     user: "test"
+   };
+   const phone = name;
+   axios.post('https://rideforlife.herokuapp.com/api/users/register', phone)
     .then(res => {
       dispatch({type: "loginSuccess", payload: res.data.token });
       setResult(JSON.stringify(res))})
@@ -86,7 +97,7 @@ const Login = props => {
    <Form>
     <Input type="text" onChange={event => setName(event.target.value)} value={name} />
     <Input type="text" onChange={event => setPass(event.target.value)} value={pass} />
-    <WideCap onClick={driverLogin} background={colors.thunderhead}>LOGIN</WideCap>
+    <WideCap onClick={userLogs} background={colors.thunderhead}>LOGIN</WideCap>
    </Form>
     <p>{name}</p>
     <p>{pass}</p>
@@ -96,4 +107,4 @@ const Login = props => {
  );
 };
 
-export default Login;
+export default UserCreate;

@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
-import { colors } from '../styles/Theme.js';
 import {
   BrowserRouter as Router,
   NavLink, Link,
@@ -10,7 +9,7 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import '../../index.css';
-import { Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
+import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
 
 const Body = styled.div`
   overflow: hidden;
@@ -41,29 +40,54 @@ const Container = styled.div`
 const SignUpPage = props => {
   const [ firstName, setFirstName ] = useState("");
   const [ lastName, setLastName ] = useState("");
+  const [ pass, setPass ] = useState("");
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
   const [ result, setResult ] = useState("");
 
-  let { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
 
-  const driverSignUp = event => {
+  const driverSignUp = (event) => {
     event.preventDefault();
-    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', { firstname: "1", lastname: "1", username: "1", password: "1", phone: "1", vehicle_type: "bodaboda" })
-     .then(data => setResult(JSON.stringify(data)))
-     .catch(error => setResult(JSON.stringify(error)))
-  };
-
-
+    const phoneContext = state.phoneNum.join("");
+    const parsedPrice = parseInt(price);
+    // const registrationWrapper = {
+    //   firstname: firstName,
+    //   lastname: lastName,
+    //   username: bracedRand,
+    //   phone: phoneContext,
+    //   email: phoneContext,
+    //   password: pass,
+    //   price: parsedPrice,
+    //   vehicle_type: "test"
+    // };
+    const registrationTester = {
+      firstname: 'Cool',
+      lastname: 'Guy',
+      username: `__${Math.random().toString().slice(2,19)}__`,
+      phone: `__${Math.random().toString().slice(2,19)}__`,
+      email: `__${Math.random().toString().slice(2,19)}__`,
+      password: 'password',
+      price: 100,
+      vehicle_type: "test"
+    };
+    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationTester)
+     .then(res => {
+       setResult(JSON.stringify(res));
+       dispatch({type: "loginSuccess", payload: res.data.token });
+     })
+     .catch(error => setResult(JSON.stringify(error)));
+  }; // driverSignUp function
 
   return (
     <Body>
-      <Container>
       {result}
+      <Container>
       <div>
         <SignUpButtons>
-           {/* <NavLink className = 'nav-link' to = '/'>Home</NavLink>
-           <NavLink to = '/'>Home</NavLink> */}
+           <NavLink className = 'nav-link' to = '/'>Home</NavLink>
+           <NavLink to = '/'>Home</NavLink>
+
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
@@ -88,6 +112,13 @@ const SignUpPage = props => {
                       onChange={event => setLastName(event.target.value)}
                       placeholder="Last?"
                />
+               <Input
+                      type="text"
+                      name="pass"
+                      onChange={event => setPass(event.target.value)}
+                      value={pass}
+                      placeholder="Password?"
+               />
               <Input
                      type="text"
                      name="location"
@@ -100,7 +131,7 @@ const SignUpPage = props => {
                      name="price"
                      onChange={event => setPrice(event.target.value)}
                      value={price}
-                     placeholder="Price"
+                     placeholder="Price?"
               />
 
               <ContinueButton> CONTINUE </ContinueButton>

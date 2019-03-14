@@ -16,9 +16,9 @@ const KeyContainer = styled.div`
   width: 100vw;
   height: 100%;
   max-width: 800px;
-  padding-bottom: 25px;
+  padding: 25px;
   // FIXME: No idea why not having this results in a gap 
-  margin-bottom: -35px;
+  margin-bottom: -25px;
   box-sizing: border-box;
 `;
 

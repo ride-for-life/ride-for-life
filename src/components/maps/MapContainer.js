@@ -7,11 +7,10 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 
 // import MyGreatPlace from './my_great_place.jsx';
 // import {greatPlaceStyle} from './my_great_place_styles.js';
-import { APIkey } from '../.google.js'; 
 import CurrentLocation from './Map';
 
 
-
+const APIkey = process.env.REACT_APP_API_KEY;
 
 // const mapStyles = {
 //   map: {
@@ -25,6 +24,8 @@ import CurrentLocation from './Map';
 let nairobi = {lat: -1, lng: 36};
 let driverLocation = {lat: -1.2, lng: 36.6};
 let davisLocation = {lat: 38.5633565, lng: -121.6708225};
+let davisLocation1 = {lat: 38.7633565, lng: -121.4708225};
+let davisLocation2 = {lat: 38.4633565, lng: -121.7708225};
 
 function createMapOptions(maps) {
   // next props are exposed at maps
@@ -54,8 +55,8 @@ export class MapContainer extends Component {
     activeMarker: {},
     selectedPlace: {}
   }
-  
-  onMarkerClick = (props, marker, e) => 
+
+  onMarkerClick = (props, marker, e) =>
     this.setState ({
       selectedPlace: props,
       activeMarker: marker,
@@ -85,7 +86,6 @@ export class MapContainer extends Component {
         >
           {/* <div>
             <h4>{this.state.selectedPlace.name}</h4>
-            
           </div> */}
         </InfoWindow>
         <Marker  onClick={this.onMarkerClick}
@@ -94,17 +94,44 @@ export class MapContainer extends Component {
                //text = {'There he is'}
         />
 
-        <InfoWindow 
+        <InfoWindow
                 marker  = {this.state.activeMarker}
                 visible = {this.state.showingInfoWindow}
-                onClose = {this.onClose} 
+                onClose = {this.onClose}
                 content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
-      
 
         ><div><h2>{this.state.selectedPlace.name}</h2></div>
         </InfoWindow>
+        <Marker  onClick={this.onMarkerClick}
+                 name = {'Driver1 Location'}
+                 position = {davisLocation1}
+               //text = {'There he is'}
+        />
+
+        <InfoWindow
+                marker  = {this.state.activeMarker}
+                visible = {this.state.showingInfoWindow}
+                onClose = {this.onClose}
+                content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
+
+        ><div><h2>{this.state.selectedPlace.name}</h2></div>
+        </InfoWindow>
+        <Marker  onClick={this.onMarkerClick}
+                 name = {'Driver2 Location'}
+                 position = {davisLocation2}
+               //text = {'There he is'}
+        />
+
+        <InfoWindow
+                marker  = {this.state.activeMarker}
+                visible = {this.state.showingInfoWindow}
+                onClose = {this.onClose}
+                content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
+
+        ><div><h2>{this.state.selectedPlace.name}</h2></div>
+        </InfoWindow>
+        
       </CurrentLocation>
-      
 
 </div>
 

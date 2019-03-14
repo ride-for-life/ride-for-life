@@ -41,11 +41,13 @@ import './maps.css';
 
 const mapStyles = {
   map: {
+
     position: 'absolute',    
     width: '550pt',
     height: '80%',
     margin: '0 auto',
     marginTop: '15%',
+
   }
 };
 export class CurrentLocation extends React.Component {

@@ -2,14 +2,17 @@ import React, { createContext, useReducer } from 'react';
 
 let UserContext = createContext();
 
-let initialState = {
-  phoneNum: []
+const initState = {
+  phoneNum: [1,2,3,4,5],
+  reactiveToken: ''
 };
 
-let reducer = (state,action) => {
+// set up logic for user updating
+
+const reducer = (state,action) => {
   switch (action.type) {
     case "reset":
-      return initialState;
+      return initState;
     case "numPush":
       if (state.phoneNum.length < 12) {
         const numPushArray = state.phoneNum.slice();
@@ -21,15 +24,20 @@ let reducer = (state,action) => {
       const numPopArray = state.phoneNum.slice();
       numPopArray.pop();
       console.log(numPopArray);
-      return {...state, phoneNum: [...numPopArray] };
+      return { ...state, phoneNum: [...numPopArray] };
+    case "loginSuccess":
+      console.log(action.payload);
+      return { ...state, reactiveToken: action.payload }
+    case "imageUpdate":
+      console.log("Blah!");
     default:
       return state
   };
 };
 
 const UserContextProvider = props => {
-  let [state, dispatch] = useReducer(reducer, initialState);
-  let value = { state, dispatch };
+  const [state, dispatch] = useReducer(reducer, initState);
+  const value = { state, dispatch };
 
   return (
     <UserContext.Provider value={value}> {props.children} </UserContext.Provider>
