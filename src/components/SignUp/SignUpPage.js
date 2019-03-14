@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
-import { colors } from '../styles/Theme.js';
 import {
   BrowserRouter as Router,
   NavLink, Link,
@@ -10,7 +9,7 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import '../../index.css';
-import { Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
+import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
 
 const Body = styled.div`
   overflow: hidden;
