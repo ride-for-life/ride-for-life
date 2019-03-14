@@ -5,6 +5,7 @@ export const colors = {
     thunderhead: "#78849E",
     reflection: "#455B63",
     storm: "#454F63",
+    eclipse: "#353A50",
     forest: "#4C6A2D",
     sky: "#BBD1EB",
     evening: "#555869",

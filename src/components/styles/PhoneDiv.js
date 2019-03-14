@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from './Theme.js';
+import { colors, fontFamily } from './Theme.js';
 
 export const PhoneDiv = styled.div`
     display: flex;
@@ -13,4 +13,5 @@ export const PhoneDiv = styled.div`
     background: ${colors.dusk};
     min-height: 100vh;
     margin: 0 auto;
+    font-family: ${fontFamily};
 `;

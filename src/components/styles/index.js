@@ -6,5 +6,6 @@ import { StatsDiv, BioDiv } from './DriverProfile'
 import { TextDisplay } from './TextDisplay';
 import { HeadText } from './HeadText';
 import { PhoneDiv } from './PhoneDiv';
+import { colors, fontFamily } from './Theme';
 
-export { KeyCap, GhostCap, PageContainer, PageContainerGrey, StatsDiv, BioDiv, TextDisplay, WideCap, HeadText, PhoneDiv, Button, ContinueButton, SignUpButtons, Inputs, Input };
+export { KeyCap, GhostCap, PageContainer, PageContainerGrey, StatsDiv, BioDiv, TextDisplay, WideCap, HeadText, PhoneDiv, Button, ContinueButton, SignUpButtons, Inputs, Input, colors, fontFamily };
