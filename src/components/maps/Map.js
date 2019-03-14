@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { GoogleApiWrapper, Map, DirectionsService, InfoWindow, Marker } from 'google-maps-react';
 
 import { useState, useEffect } from "react";
 import { withRouter } from 'react-router-dom'
@@ -34,6 +34,7 @@ import './maps.css';
 //     .then(data => setResult(JSON.stringify(data)))
 //     .catch(error => setResult(JSON.stringify(error)))
 //  };
+
 
 
 
@@ -94,13 +95,16 @@ export class CurrentLocation extends React.Component {
     var destinationB = new this.props.google.maps.LatLng(40.087692, -122.421150);
     var destinationC = 'San mateo, CA';
     var destination = new this.props.google.maps.LatLng(37.5633565, -121.4708225);
-    
+    let davisLocation = {lat: 38.5633565, lng: -121.6708225};
+    let davisLocation1 = {lat: 38.7633565, lng: -121.4708225};
+    let davisLocation2 = {lat: 38.4633565, lng: -121.7708225};
+
 
     var service = new this.props.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
   {
     origins: [/*origin1, origin2*/ origin],
-    destinations: [/*destinationA, */destinationB, destination, destinationC],
+    destinations: [/*destinationA, */destinationB, destination, destinationC, davisLocation1, davisLocation, davisLocation2],
     travelMode: 'DRIVING',
     unitSystem: this.props.google.maps.UnitSystem.METRIC,
     avoidHighways: false,
@@ -116,6 +120,7 @@ export class CurrentLocation extends React.Component {
           .reduce((min, cur) => min.duration.value <= cur.duration.value ? min : cur); // min duration
       // shortestRoute = { distance { text value } duration { text value } status}
       console.log("shortest route:", shortestRoute.duration.text);
+      //console.log(props.drivers);
         //console.log(response.rows[1].elements[0].duration);
       // var originList = response.originAddresses;
       // var destinationList = response.destinationAddresses;
@@ -156,7 +161,6 @@ export class CurrentLocation extends React.Component {
       );
       // maps.Map() is constructor that instantiates the map
       this.map = new maps.Map(node, mapConfig);
-
     }
   }
 
@@ -190,13 +194,16 @@ export class CurrentLocation extends React.Component {
 
   render() {
     const style = Object.assign({}, mapStyles.map);
-
+   
     return (
       <div className = 'mapcontainer'>
         <div style={style} ref="map">
           Loading map...
+          
         </div>
+
         {this.renderChildren()}
+       
       </div>
     );
   }
@@ -204,7 +211,7 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
-  zoom: 11,
+  zoom: 9,
   initialCenter: { 
     lat: -1.2884,
     lng: 36.8233
