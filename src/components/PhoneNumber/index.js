@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PhoneDiv, colors } from '../styles';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import NumberDisplay from './NumberDisplay';
 import KeyPad from './KeyPad';
@@ -40,7 +41,9 @@ class PhoneNumber extends React.Component {
           placeholder="Enter phone number"
             value={ this.state.phone }
             onChange={ phone => this.setState({ phone }) } />
-              <TransitionButton link='/PhoneNumber' route='somecomponent' text='NEXT STEP' />
+                            <TransitionButton link='/info' text='NEXT STEP' />
+              {/* Need the transition button here.
+                  And it needs to not work unless a number is in. */}
               <KeyPad />
       </Body>
   );
@@ -48,3 +51,5 @@ class PhoneNumber extends React.Component {
 };
 
 export default PhoneNumber;
+
+// <PhoneDiv style={{paddingBottom: '0'}}>

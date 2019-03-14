@@ -1,27 +1,23 @@
 import React from "react";
-
-const box={
-  border: '1px solid black',
-  margin: '5px'
-}
+import { DriverStatsDiv } from "../styles";
 
 const DriverStats = props => {
 
   return (
-   <div>
-      <div style={box}>
-        <p>{props.driver.total_rides}</p>
-        <p>Rides </p>
+   <DriverStatsDiv>
+      <div>
+        <h2>{props.rides}</h2>
+        <p>RIDES</p>
       </div>
-      <div style={box}>
-        <p>150</p>
-        <p>Price </p>
+      <div>
+        <h2>{props.income}</h2>
+        <p>INCOME</p>
       </div>
-      <div style={box}>
-        <p>39</p>
-        <p>Reviews</p>
+      <div>
+      <h2>{props.reviews}</h2>
+        <p>REVIEWS</p>
       </div>
-   </div>
+   </DriverStatsDiv>
  );
 };
 

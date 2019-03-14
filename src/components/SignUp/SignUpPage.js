@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
+import TransitionButton from '../TransitionButton'
 import {
   BrowserRouter as Router,
   NavLink, Link,
@@ -124,7 +125,7 @@ const SignUpPage = props => {
                      placeholder="Price?"
               />
 
-              <ContinueButton> CONTINUE </ContinueButton>
+              <Link to='/profile'><ContinueButton> CONTINUE </ContinueButton></Link>
                </Inputs>
             </form>
 
