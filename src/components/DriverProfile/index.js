@@ -33,6 +33,10 @@ const DriverProfile = () => {
     []
   );
 
+  const notify = {
+        
+  };
+
 return (
     <Body>
       <DriverDiv>
@@ -40,7 +44,7 @@ return (
         <DriverName name={drivername} location={location}/>
         <DriverStats driver={driver} />
         <DriverBio name={drivername} myBio={bioString} />
-
+        <button onClick={notify}></button>
       </DriverDiv>
     </Body>
 )
