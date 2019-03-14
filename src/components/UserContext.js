@@ -4,7 +4,8 @@ let UserContext = createContext();
 
 const initState = {
   phoneNum: [1,2,3,4,5],
-  reactiveToken: ''
+  reactiveToken: '',
+  img: ''
 };
 
 // set up logic for user updating
@@ -29,7 +30,8 @@ const reducer = (state,action) => {
       console.log(action.payload);
       return { ...state, reactiveToken: action.payload }
     case "imageUpdate":
-      console.log("Blah!");
+      console.log(action.payload);
+      return { ...state, img: action.payload};
     default:
       return state
   };

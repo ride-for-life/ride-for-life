@@ -4,6 +4,7 @@ import { authxios, imgxios } from '../auth/';
 import { UserContext } from '../UserContext';
 import { Input, Inputs } from '../styles';
 
+
 import DriverCarousel from '../maps/DriverCarousel';
 
 
@@ -19,7 +20,7 @@ const EditProfile = props => {
   const { state, dispatch } = useContext(UserContext);
   const [ selfie, setSelfie ] = useState(null);
   const [ bio, setBio ] = useState('');
-  const [ imgurLink, setImgurLink] = useState('');
+  const [ imgurLink, setImgurLink ] = useState('');
   const id = 1;
 
 
@@ -42,14 +43,17 @@ const EditProfile = props => {
     setSelfie(event.target.files[0]);
   };
 
+  const imgurKey = process.env.REACT_APP_IMGUR_KEY;
+
   const fileUpload = () => {
     const imgData = new FormData();
     imgData.append('image', selfie, selfie.name);
-    imgxios('').post('https://api.imgur.com/3/image', imgData)
+    imgxios(imgurKey).post('https://api.imgur.com/3/image', imgData)
       .then(res => {
         console.log(res);
-        setImgurLink(`${res.data.link}`);
-        dispatch({ type: "imageUpdate", payload: res.data.link })
+        console.log(res.data.data.link);
+        dispatch({ type: "imageUpdate", payload: res.data.data.link });
+        setImgurLink(res.data.data.link);
       })
       .catch(err => {
         console.log(err)});
@@ -57,10 +61,11 @@ const EditProfile = props => {
 
   useEffect(
     () => {
+      console.log(imgurLink);
       if (imgurLink !== '') {
       const axiosGet = async () => {
         const changes = {
-          vehicle_type: `https://i.imgur.com/${imgurLink}`
+          vehicle_type: {imgurLink}
         };
         const res = await authxios(state.reactiveToken).put(`https://rideforlife.herokuapp.com/api/drivers/${id}`, changes);
       };
@@ -98,14 +103,14 @@ const EditProfile = props => {
   return (
     <div>
       <input type="file" onChange={fileSelect} />
+      <img src={imgurLink} height="300" width="300" />
       <button onClick={logTest}>Test File?</button>
       <button onClick={fileUpload}>Upload File?</button>
       <button onClick={driverEdit}>Test Edit</button>
       <button onClick={driverDelete}>Test Delete</button>
       <button onClick={makeRide}>Test Ride</button>
-
       <form onSubmit={editProfile}>
-      {imgurLink && <img src={`https://i.imgur.com/${imgurLink}`} />}
+
       <DriverCarousel />
 
       <Inputs>
