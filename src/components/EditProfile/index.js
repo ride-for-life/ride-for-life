@@ -3,7 +3,7 @@ import axios from 'axios';
 import { authxios, imgxios } from '../auth/';
 import { UserContext } from '../UserContext';
 import { Input, Inputs } from '../styles';
-import { clientID } from '../.google.js';
+
 
 import DriverCarousel from '../maps/DriverCarousel';
 
@@ -48,7 +48,7 @@ const EditProfile = props => {
   const fileUpload = () => {
     const imgData = new FormData();
     imgData.append('image', selfie, selfie.name);
-    imgxios(APIkey).post('https://api.imgur.com/3/image', imgData)
+    imgxios(imgurKey).post('https://api.imgur.com/3/image', imgData)
       .then(res => {
         console.log(res);
         console.log(res.data.data.link);
