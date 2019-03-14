@@ -27,6 +27,8 @@ export default class App extends Component {
           <Route exact path='/' component={Phone1} />
           <Route exact path='/mom-to-be' component={Phone2} />
           <Route exact path='/caregiver' component={Phone2} />
+          {/* <Route exact path='/request-ride' component={} />
+          <Route exact path='/view-drivers' component={} /> */}
         </div>
     );
   }
