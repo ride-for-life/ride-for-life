@@ -1,0 +1,17 @@
+/* const containerStyle = {
+    map: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '0 auto',
+      marginLeft: '25%'
+    }
+  }; */
+
+  .containerStyle {
+
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin: 0 25% 0 25%;
+  }

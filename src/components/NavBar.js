@@ -13,6 +13,7 @@ import SubmitRating from './Review/';
 import UserCreate from './UserCreate';
 import EditProfile from './EditProfile/';
 import ConfirmPickup from './ConfirmPickup'
+import SearchDrivers from "./maps/index";
 
 
 const NavBar = () => {
@@ -63,7 +64,7 @@ const NavBar = () => {
      <Route exact path="/DriverProfile" component={DriverProfile} />
      <Route exact path="/DriverProfile1" component={DriverProfile1} />
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
-     <Route exact path='/SearchResult' component = {MapContainer} />
+     <Route exact path='/SearchResult' component = {SearchDrivers} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
      <Route exact path='/UserCreate' component={UserCreate} />
      <Route exact path='/DriverEdit' component={EditProfile} />
