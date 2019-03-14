@@ -5,13 +5,14 @@ import DriverName from "./DriverName";
 import DriverStats from "./DriverStats"
 import DriverBio from "./DriverBio"
 import { renderComponent } from "recompose";
+import EditProfile from './EditProfile';
 
 const DriverProfile = () => {
 
    const [driver, setDriver] = useState({});
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location
-    
+   
 useEffect(
         () => {
         const axiosGet = async () => {
@@ -23,10 +24,11 @@ useEffect(
         },
         []
     );
-        
+
 return (
     <div>
         {JSON.stringify(driver)}
+        <EditProfile />
         <PageContainerGrey>
         <DriverName name={drivername} location={location}/>
         <StatsDiv>
