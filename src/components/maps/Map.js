@@ -1,12 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
+import { useState, useEffect } from "react";
+import { withRouter } from 'react-router-dom'
+import axios from "axios";
+
+
+import './maps.css';
+
+// const driversdata = props => {
+//   const [drivers, setDriver] = useState("cool?");
+//   const [pass, setPass] = useState("awesome!");
+//   const [result, setResult] = useState("Awaiting results?");
+
+//  useEffect(
+//     () => {
+//       const axiosGet = async () => {
+//         const data = await axios.get(
+//           `https://rideforlife.herokuapp.com/api/drivers`
+//         );
+//         setResult(JSON.stringify(data));
+//       };
+//       axiosGet();
+//     },
+//     []
+//   );
+
+//  const driverLogin = (event) => {
+//    event.preventDefault();
+//    const assembleQuery = { loginQuery: name , password:  pass  };
+//    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
+//     .then(data => setResult(JSON.stringify(data)))
+//     .catch(error => setResult(JSON.stringify(error)))
+//  };
+
+
+
+
+
 const mapStyles = {
   map: {
-    position: 'absolute',
+    position: 'absolute',    
+    width: '550pt',
+    height: '80%',
+    margin: '0 auto',
     marginTop: '15%',
-    width: '100%',
-    height: '80%'
   }
 };
 export class CurrentLocation extends React.Component {
@@ -15,6 +54,7 @@ export class CurrentLocation extends React.Component {
 
     const { lat, lng } = this.props.initialCenter;
     this.state = {
+      drivers: [],
       currentLocation: {
         lat: lat,
         lng: lng
@@ -48,15 +88,17 @@ export class CurrentLocation extends React.Component {
       var origin = this.state.currentLocation;
     //var origin1 = new this.props.google.maps.LatLng(38.5633565, -121.4708225);
     //var origin2 = 'Greenwich, England';
-    //var destinationA = 'Stockholm, Sweden';
-    //var destinationB = new this.props.google.maps.LatLng(50.087692, 14.421150);
-    var destination = new this.props.google.maps.LatLng(38.5633565, -121.6708225);
+   // var destinationA = new this.props.google.maps.LatLng(34.887692, -121.921150);
+    var destinationB = new this.props.google.maps.LatLng(40.087692, -122.421150);
+    var destinationC = 'San mateo, CA';
+    var destination = new this.props.google.maps.LatLng(37.5633565, -121.4708225);
+    
 
     var service = new this.props.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
   {
     origins: [/*origin1, origin2*/ origin],
-    destinations: [/*destinationA, destinationB*/ destination],
+    destinations: [/*destinationA, */destinationB, destination, destinationC],
     travelMode: 'DRIVING',
     unitSystem: this.props.google.maps.UnitSystem.METRIC,
     avoidHighways: false,
@@ -71,7 +113,7 @@ export class CurrentLocation extends React.Component {
           .reduce((a, b) => a + b) // merge routes into single array
           .reduce((min, cur) => min.duration.value <= cur.duration.value ? min : cur); // min duration
       // shortestRoute = { distance { text value } duration { text value } status}
-      console.log("shortest route:", shortestRoute);
+      console.log("shortest route:", shortestRoute.duration.text);
         //console.log(response.rows[1].elements[0].duration);
       // var originList = response.originAddresses;
       // var destinationList = response.destinationAddresses;
@@ -148,7 +190,7 @@ export class CurrentLocation extends React.Component {
     const style = Object.assign({}, mapStyles.map);
 
     return (
-      <div>
+      <div className = 'mapcontainer'>
         <div style={style} ref="map">
           Loading map...
         </div>

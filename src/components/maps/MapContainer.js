@@ -13,14 +13,14 @@ import CurrentLocation from './Map';
 
 
 
-const mapStyles = {
-  map: {
-    position: 'absolute',
-    marginTop: '15%',
-    width: '100%',
-    height: '80%'
-  }
-};
+// const mapStyles = {
+//   map: {
+//     position: 'absolute',
+//     marginTop: '15%',
+//     width: '100%',
+//     height: '30%'
+//   }
+// };
 
 let nairobi = {lat: -1, lng: 36};
 let driverLocation = {lat: -1.2, lng: 36.6};
