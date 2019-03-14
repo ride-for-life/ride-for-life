@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhoneDiv, colors } from '../styles';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import NumberDisplay from './NumberDisplay';
 import KeyPad from './KeyPad';
@@ -32,7 +33,7 @@ const PhoneNumber = props => {
               <NumberDisplay />
               {/* Need the transition button here.
                   And it needs to not work unless a number is in. */}
-              <TransitionButton link='/PhoneNumber' route='somecomponent' text='NEXT STEP' />
+              <TransitionButton link='/info' text='NEXT STEP' />
               <KeyPad />
           </PhoneDiv>
       </Body>

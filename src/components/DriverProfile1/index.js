@@ -4,7 +4,8 @@ import { PageContainerGrey, DriverStatsDiv, DriverBioDiv, DriverDiv, colors } fr
 import DriverName from "./DriverName";
 import DriverStats from "./DriverStats";
 import DriverReview from "./DriverReview";
-// import DriverReview from "./DriverReview";
+import DriverBio from "./DriverBio"
+import {NavLink} from 'react-router-dom';
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
 
@@ -46,7 +47,7 @@ useEffect(
 return (
     <Body>
     <DriverDiv>
-        {JSON.stringify(driver)}
+        <NavLink to = '/'>Home</NavLink>
         <DriverName name={drivername} location={location}/>
         <DriverStats driver={driver} rides={rides} income={income} reviews={reviews}/>
     {/*<DriverBio name={drivername} myBio={bioString} reviews={reviews} avgRating={avgRating}/>*/}
