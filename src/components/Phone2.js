@@ -1,7 +1,7 @@
 import React from 'react'
 import TransitionButton from './TransitionButton'
 import BackButton from './BackButton'
-import { Route, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { PhoneDiv, HeadText, colors } from './styles';
 import styled from 'styled-components';
 
@@ -21,11 +21,11 @@ const Phone2 = () => {
     return (
         <Body>
             <PhoneDiv>
-                            <BackButton />
+            <NavLink to='/'>Home</NavLink>
                 <HeadText>{title}</HeadText>
                 <ButtonContainer>
-                    <TransitionButton link='/request-ride' route='somecomponent' text='REQUEST RIDE' />
-                    <TransitionButton link='/view-drivers' route='somecomponent' text='VIEW DRIVERS' />
+                    <TransitionButton link='/confirm-pickup' text='REQUEST RIDE' />
+                    <TransitionButton link='/search' text='VIEW DRIVERS' />
                 </ButtonContainer>
             </PhoneDiv>
         </Body>
