@@ -2,7 +2,7 @@ import React from "react";
 import { DriverStatsDiv } from "../styles";
 
 const DriverStats = props => {
-  const driver = props.driver;
+
   return (
    <DriverStatsDiv>
       <div>

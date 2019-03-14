@@ -18,19 +18,21 @@ const DriverProfile = () => {
 
    const [driver, setDriver] = useState({});
    const drivername = `${driver.firstname} ${driver.lastname}`;
-   const location = driver.location
-   
-useEffect(
-        () => {
-        const axiosGet = async () => {
+   const location = driver.location;
+   const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : ''
+
+
+  useEffect(
+    () => {
+      const axiosGet = async () => {
         const id = 1;
         const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${id}`)
         setDriver(res.data);
-        };
-        axiosGet();
-        },
-        []
-    );
+      };
+      axiosGet();
+    },
+    []
+  );
 
 return (
     <Body>
@@ -39,7 +41,7 @@ return (
     <EditProfile />
     <DriverName name={drivername} location={location}/>
     <DriverStats driver={driver} />
-    <DriverBio name={drivername} />
+    <DriverBio name={drivername} myBio={bioString} />
     {console.log(driver)}
     </DriverDiv>
     </Body>

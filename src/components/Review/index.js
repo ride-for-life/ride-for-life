@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
 import axios from 'axios';
 import { ReactComponent as StarSVG} from "./star.svg";
 import { colors, WideCap, fontFamily } from "../styles";
 import styled from 'styled-components';
+import { authxios } from '../auth';
 
 const Star = styled(StarSVG)`
   width: 40px;
@@ -84,7 +86,8 @@ const Form = styled.form`
 
 const SubmitRating = props => {
   const [ text, setText ] = useState("");
-  const [ stars, setStars ] = useState(4);
+  const [ stars, setStars ] = useState(5);
+  const { state, dispatch } = useContext(UserContext);
 
   const maxStars = 5;
 
@@ -92,7 +95,7 @@ const SubmitRating = props => {
     event.preventDefault();
     const testReview = { "user_id": 1, "driver_id": 1, "review_content": "Id est prima erant nobis. Ut odio alia mediocritatem mel.", "rating": 3 };
     const id = 1;
-    axios.post(`https://rideforlife.herokuapp.com/api/drivers/${id}/review`, testReview)
+    authxios(state.reactiveToken).post(`https://rideforlife.herokuapp.com/api/drivers/${id}/review`, testReview)
       .then(res => setText(res))
       .catch(err => setText(err));
   };
@@ -104,20 +107,22 @@ const SubmitRating = props => {
 // 	"rating": 3
 // }
 
+// so I can get around the ugly no-image display thing here by setting an && logic on top of the img, right? All I have to do is make sure that if the prop I get is an empty string, I return mu.
   return (
       <Container>
       <div className="review-driver">
-        <img />
+        <img src='' alt={props.name} />
         <h2>{props.name || "Name"}</h2>
         <h3>{props.loc || "Location"}</h3>
       </div>
     <Form onSubmit={leaveReview}>
       <h1>Details</h1>
       <h3>Describe your trip</h3>
-      <textarea name="text" onChange={(event) => setText(event.target.value)} />
+      <textarea name="text" value={text} onChange={(event) => setText(event.target.value)} />
       <h3>Rate your trip</h3>
       <div className="stars">
-      {[...Array(maxStars).keys()].map((val) => <Star className={stars > val ? 'gold': 'grey'}
+      {[...Array(maxStars).keys()].map((val, index) => <Star className={stars > val ? 'gold': 'grey'}
+      key={index}
                                        onClick={(event) => setStars(val + 1)} />)}
       </div>
     {/*<input type="text" name="stars" onChange={(event) => setStars(event.target.value)} />*/}

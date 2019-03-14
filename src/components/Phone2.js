@@ -21,7 +21,7 @@ const Phone2 = () => {
     return (
         <Body>
             <PhoneDiv>
-                <BackButton />
+                            <BackButton />
                 <HeadText>{title}</HeadText>
                 <ButtonContainer>
                     <TransitionButton link='/request-ride' route='somecomponent' text='REQUEST RIDE' />
