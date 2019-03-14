@@ -14,13 +14,12 @@ import './maps.css';
 
 const mapStyles = {
   map: {
-
     position: 'absolute',    
-    width: '550pt',
-    height: '80%',
-    margin: '0 auto',
-    marginTop: '15%',
-
+    width: '100%',
+    height: '100%',
+    margin: '0',
+    top: 0,
+    zIndex: -1,
   }
 };
 export class CurrentLocation extends React.Component {
