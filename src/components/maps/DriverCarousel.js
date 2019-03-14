@@ -22,37 +22,43 @@ const DriverCarousel = props => {
       const axiosGet = async () => {
 
         const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`);
-        setDrivers([...res.data]);
+        const array = [...res.data];
+        const myCoordinatesSplit = array.map(driver =>
+          driver.location.split(", "));
+        const parsedCoords = myCoordinatesSplit.map(array => { return { lat: parseInt(array[0]), long: parseInt(array[1])}});
+        setDrivers(myCoordinatesSplit);
       };
       axiosGet();
     },
     []
   );
 
-const carousel = drivers && drivers.map(driver => {
-   return (
+// const carousel = drivers && drivers.map(driver => {
+//    return (
+//
+//         <Slide>
+//         <NavLink to={`/profile/${driver.driver_id}`}>{JSON.stringify(driver.firstname)}</NavLink>
+//         </Slide>
+//
+//    );
+//  });
 
-        <Slide>
-        <NavLink to={`/profile/${driver.driver_id}`}>{JSON.stringify(driver.firstname)}</NavLink>
-        </Slide>
 
-   );
- });
-
-
-
-    return (
-      <div>
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={3}>
-        <Slider>
-      {carousel}
-      </Slider>
-      </CarouselProvider>
-      </div>
-  );
+return ( <p>
+  {JSON.stringify(drivers)}
+  </p>)
+  //   return (
+  //     <div>
+  //     <CarouselProvider
+  //       naturalSlideWidth={100}
+  //       naturalSlideHeight={125}
+  //       totalSlides={3}>
+  //       <Slider>
+  //     {carousel}
+  //     </Slider>
+  //     </CarouselProvider>
+  //     </div>
+  // );
 };
 
 export default DriverCarousel;

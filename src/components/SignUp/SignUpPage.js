@@ -89,7 +89,7 @@ const SignUpPage = props => {
            <Inputs>
              <Input  style = {{color: "green"}}
                      type="text"
-                     name="lastName"
+                     name="firstName"
                      value={firstName}
 
                      onChange={event => setFirstName(event.target.value)}
@@ -97,7 +97,7 @@ const SignUpPage = props => {
               />
               <Input  style = {{color: "green"}}
                       type="text"
-                      name="firstName"
+                      name="lastName"
                       value={lastName}
 
                       onChange={event => setLastName(event.target.value)}
@@ -125,7 +125,7 @@ const SignUpPage = props => {
                      placeholder="Price?"
               />
 
-              <Link to='/profile'><ContinueButton> CONTINUE </ContinueButton></Link>
+              <ContinueButton> CONTINUE </ContinueButton>
                </Inputs>
             </form>
 
@@ -136,3 +136,5 @@ const SignUpPage = props => {
 };
 
 export default SignUpPage;
+
+// <Link to='/profile'></Link>
