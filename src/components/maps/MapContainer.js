@@ -10,7 +10,7 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 import CurrentLocation from './Map';
 
 
-const APIkey = process.env.API_KEY;
+const APIkey = process.env.REACT_APP_API_KEY;
 
 const mapStyles = {
   map: {
