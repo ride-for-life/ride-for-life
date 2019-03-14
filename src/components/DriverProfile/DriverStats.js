@@ -6,7 +6,7 @@ const DriverStats = props => {
   return (
    <DriverStatsDiv>
       <div>
-        <h2>{props.driver.total_rides}</h2>
+        <h2>{props.rides}</h2>
         <p>RIDES</p>
       </div>
       <div>
@@ -14,7 +14,7 @@ const DriverStats = props => {
         <p>PRICE</p>
       </div>
       <div>
-        <h2>39</h2>
+      <h2>{props.reviews}</h2>
         <p>REVIEWS</p>
       </div>
    </DriverStatsDiv>

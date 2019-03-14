@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import SignUpPage from "./SignUp/SignUpPage";
-import { Route, Link, NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import Phone1 from "./Phone1";
 import Phone2 from "./Phone2";
 import Login from "./Login";
@@ -12,6 +12,8 @@ import MapContainer from "./maps/MapContainer"
 import SubmitRating from './Review/';
 import UserCreate from './UserCreate';
 import EditProfile from './EditProfile/';
+import ConfirmPickup from './ConfirmPickup'
+import SearchDrivers from "./maps/index";
 
 
 const NavBar = () => {
@@ -41,11 +43,8 @@ const NavBar = () => {
      <NavLink className="tab" to="/SearchResult">
        Search Result
      </NavLink>
-     <NavLink className="tab" to="/ConfirmPickup">
+     <NavLink className="tab" to="/confirm-pickup">
        Confirm Pickup
-     </NavLink>
-     <NavLink className="tab" to="/SubmitRating">
-       Submit Rating
      </NavLink>
      <NavLink className="tab" to="/SubmitRating">
        Submit Rating
@@ -65,10 +64,12 @@ const NavBar = () => {
      <Route exact path="/DriverProfile" component={DriverProfile} />
      <Route exact path="/DriverProfile1" component={DriverProfile1} />
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
-     <Route exact path='/SearchResult' component = {MapContainer} />
+     <Route exact path='/SearchResult' component = {SearchDrivers} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
      <Route exact path='/UserCreate' component={UserCreate} />
      <Route exact path='/DriverEdit' component={EditProfile} />
+     <Route exact path='/confirm-pickup' component={ConfirmPickup} />
+
 
    </div>
  );

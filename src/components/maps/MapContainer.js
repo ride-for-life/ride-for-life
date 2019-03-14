@@ -58,7 +58,8 @@ export class MapContainer extends Component {
               {name:2, loc: {lat: 38.3633565, lng: -121.6908225}},
               {name:3, loc: {lat: 38.4133565, lng: -121.7108225}},
               {name:4, loc: {lat: 38.4333565, lng: -121.2458225}},
-              {name:5, loc: {lat: 38.6533565, lng: -121.1308225}} ]
+              {name:5, loc: {lat: 38.6533565, lng: -121.1308225}} 
+            ,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]
   }
 
 
@@ -77,21 +78,34 @@ export class MapContainer extends Component {
           activeMarker: null
         })
       }
+      console.log( Object.values(this.props.drivers), typeof this.props.drivers);
+      console.log( this.props.drivers[0].location );
+      console.log( parseFloat(this.props.drivers[0].location ));
+      console.log(this.props.drivers[0].location.replace(',',' '));
+      console.log( parseFloat(this.props.drivers[0].location.replace(',',' '))  )
     };
 
   render() {
     return (
       <div>
            { /** Map loaded and centered on browser's current location **/}
-      <CurrentLocation centerAroundCurrentLocation = {true} google={this.props.google}>
+      <CurrentLocation centerAroundCurrentLocation = {true} google={this.props.google} drivers = {this.props.drivers}   >
  
            { /** Marker showing users current location **/}
-        <Marker onClick={this.onMarkerClick} name={'Your Location'} />
-        
+        <Marker onClick={this.onMarkerClick} name={'Your Location'} position = {this.props.CurrentLocation} />
+        <InfoWindow
+                marker  = {this.state.activeMarker}
+                visible = {this.state.showingInfoWindow}
+                onClose = {this.onClose}
+                content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
 
-            { /** Generate markers for all drivers NOTE: DRIVERS ARE NOT THE REAL DRIVERS OBTAINED FROM SERVER **/}
-        {this.state.drivers.map( driver => <Marker onClick={this.onMarkerClick} name={`Driver ${driver.name}`} position = {driver.loc}/>
+        ><div><h2>{this.state.selectedPlace.name}</h2></div>
+       </InfoWindow>
+
+       { /** Generate markers for all drivers NOTE: DRIVERS ARE NOT THE REAL DRIVERS OBTAINED FROM SERVER **/}
+        {Object.values(this.props.drivers).map( (driver , index) => <Marker onClick={this.onMarkerClick} name={`Driver ${driver.firstname}`} position = {this.state.drivers[index].loc}/>
         )}
+           
             { /** Displays a window showing drivers name when clicked **/}
         <InfoWindow
                 marker  = {this.state.activeMarker}

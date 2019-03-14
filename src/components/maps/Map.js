@@ -1,41 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { GoogleApiWrapper, Map, DirectionsService, InfoWindow, Marker } from 'google-maps-react';
+// import { GoogleApiWrapper, Map, DirectionsService, InfoWindow, Marker } from 'google-maps-react';
 
-import { useState, useEffect } from "react";
-import { withRouter } from 'react-router-dom'
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import { withRouter } from 'react-router-dom'
+// import axios from "axios";
 
 
 import './maps.css';
-
-// const driversdata = props => {
-//   const [drivers, setDriver] = useState("cool?");
-//   const [pass, setPass] = useState("awesome!");
-//   const [result, setResult] = useState("Awaiting results?");
-
-//  useEffect(
-//     () => {
-//       const axiosGet = async () => {
-//         const data = await axios.get(
-//           `https://rideforlife.herokuapp.com/api/drivers`
-//         );
-//         setResult(JSON.stringify(data));
-//       };
-//       axiosGet();
-//     },
-//     []
-//   );
-
-//  const driverLogin = (event) => {
-//    event.preventDefault();
-//    const assembleQuery = { loginQuery: name , password:  pass  };
-//    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
-//     .then(data => setResult(JSON.stringify(data)))
-//     .catch(error => setResult(JSON.stringify(error)))
-//  };
-
-
 
 
 

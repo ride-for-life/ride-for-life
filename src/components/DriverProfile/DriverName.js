@@ -6,8 +6,8 @@ const DriverName = props => {
     return (
    <DriverNameDiv>
      <img src='' alt={props.name} />
-     <h1>Name: {props.name}</h1>
-     <h2>Location: {props.location}</h2>
+     <h1>{props.name}</h1>
+     <h2>{props.location}</h2>
    </DriverNameDiv>
  );
 };
