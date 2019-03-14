@@ -7,5 +7,6 @@ import { TextDisplay } from './TextDisplay';
 import { HeadText } from './HeadText';
 import { PhoneDiv } from './PhoneDiv';
 import { colors, fontFamily } from './Theme';
+import { NavStyle } from './Nav';
 
-export { KeyCap, GhostCap, PageContainer, DriverDiv, DriverNameDiv, DriverStatsDiv, DriverBioDiv, TextDisplay, WideCap, HeadText, PhoneDiv, Button, ContinueButton, SignUpButtons, Inputs, Input, colors, fontFamily, PageContainerGrey };
+export { KeyCap, GhostCap, PageContainer, DriverDiv, DriverNameDiv, DriverStatsDiv, DriverBioDiv, TextDisplay, WideCap, HeadText, PhoneDiv, Button, ContinueButton, SignUpButtons, Inputs, Input, colors, fontFamily, PageContainerGrey, NavStyle };
