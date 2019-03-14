@@ -7,7 +7,6 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 
 // import MyGreatPlace from './my_great_place.jsx';
 // import {greatPlaceStyle} from './my_great_place_styles.js';
- 
 import CurrentLocation from './Map';
 
 
@@ -85,7 +84,6 @@ export class MapContainer extends Component {
         >
           {/* <div>
             <h4>{this.state.selectedPlace.name}</h4>
-
           </div> */}
         </InfoWindow>
         <Marker  onClick={this.onMarkerClick}
@@ -100,11 +98,9 @@ export class MapContainer extends Component {
                 onClose = {this.onClose}
                 content = '<div id="content"><h1 id="firstHeading" class="firstHeading">Uluru</h1></div>'
 
-
         ><div><h2>{this.state.selectedPlace.name}</h2></div>
         </InfoWindow>
       </CurrentLocation>
-
 
 </div>
 

@@ -12,7 +12,7 @@ const DriverProfile = () => {
    const [driver, setDriver] = useState({});
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location
-
+   
 useEffect(
         () => {
         const axiosGet = async () => {
