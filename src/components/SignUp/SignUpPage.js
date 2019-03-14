@@ -10,31 +10,11 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import '../../index.css';
-import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button } from '../styles';
+import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer } from '../styles';
 
 const Body = styled.div`
   overflow: hidden;
   position: relative;
-`;
-
-const Container = styled.div`
-  width: 800px;
-  max-width: 100%;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 4%;
-  flex-direction: column;
-   &:before {
-    content: "";
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    width: 80vh;
-    height: 80vh;
-    border-radius: 100%;
-    background: ${colors.forest};
-    z-index: -1;
-  }
 `;
 
 
@@ -74,11 +54,10 @@ const SignUpPage = props => {
   return (
     <Body>
       {result}
-      <Container>
+      <FormContainer>
       <div>
         <SignUpButtons>
-           <NavLink className = 'nav-link' to = '/'>Home</NavLink>
-           <NavLink to = '/'>Home</NavLink>
+           <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
 
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
            <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
@@ -87,28 +66,26 @@ const SignUpPage = props => {
 
            <form onSubmit={driverSignUp}>
            <Inputs>
-             <Input  style = {{color: "green"}}
-                     type="text"
+             <Input  type="text"
                      name="lastName"
                      value={firstName}
 
                      onChange={event => setFirstName(event.target.value)}
-                     placeholder="First?"
+                     placeholder="First"
               />
-              <Input  style = {{color: "green"}}
-                      type="text"
+              <Input  type="text"
                       name="firstName"
                       value={lastName}
 
                       onChange={event => setLastName(event.target.value)}
-                      placeholder="Last?"
+                      placeholder="Last"
                />
                <Input
-                      type="text"
+                      type="password"
                       name="pass"
                       onChange={event => setPass(event.target.value)}
                       value={pass}
-                      placeholder="Password?"
+                      placeholder="Password"
                />
               <Input
                      type="text"
@@ -122,7 +99,7 @@ const SignUpPage = props => {
                      name="price"
                      onChange={event => setPrice(event.target.value)}
                      value={price}
-                     placeholder="Price?"
+                     placeholder="Price"
               />
 
               <Link to='/profile'><ContinueButton> CONTINUE </ContinueButton></Link>
@@ -130,7 +107,7 @@ const SignUpPage = props => {
             </form>
 
       </div>
-      </Container>
+      </FormContainer>
     </Body>
   );
 };

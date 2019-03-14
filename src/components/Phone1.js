@@ -1,7 +1,6 @@
 import React from 'react'
 import TransitionButton from './TransitionButton'
-import { NavLink } from 'react-router-dom'
-import { PhoneDiv, HeadText, colors } from './styles';
+import { PhoneDiv, HeadText, NavStyle, colors, } from './styles';
 import styled from 'styled-components';
 
 const title = 'Are you a:'
@@ -20,8 +19,9 @@ const Body = styled.div`
 
 const Phone1 = () => {
     return (
-        <PhoneDiv>
-            <NavLink to='/'>Home</NavLink>
+        <Body>
+        <PhoneDiv style={{position: "relative"}}>
+            <NavStyle to='/'>←Home</NavStyle>
             <HeadText>{title}</HeadText>
             <ButtonContainer>
                 <TransitionButton link='/sign-up' text='DRIVER' />
@@ -29,6 +29,7 @@ const Phone1 = () => {
                 <TransitionButton link='/caregiver' route='' text='CAREGIVER' />
             </ButtonContainer>
         </PhoneDiv>
+        </Body>
     )
 }
 

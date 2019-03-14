@@ -4,16 +4,24 @@ import { colors } from './Theme.js';
 
 export const DriverDiv = styled(PhoneDiv)`
   background: none;
+  position: relative;
 `;
 
 export const DriverNameDiv = styled.div`
   text-align: center;
-  img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .driver-img {
     width: 150px;
     height: 150px;
+    box-sizing: border-box;
     background: ${colors.storm};
     background-image: linear-gradient(${colors.storm}, ${colors.evening});
     border-radius: 20px;
+    img {
+      object-fit: cover;
+    }
   }
   h1 {
     color: ${colors.evening};

@@ -23,7 +23,32 @@ import PhoneInput from 'react-phone-number-input';
 
 const Body = styled.div`
     width: 100%;
-    background: ${ colors.dusk };
+    background: ${ colors.dusk } ;
+    min-height: 100vh;
+    .react-phone-number-input {
+        margin-left: -35px;
+        svg {
+            fill: white;
+        }
+        input {
+            height: 80px;
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 100%;
+            box-shadow: 0 5px 2px ${colors.midnight + '22'};
+            color: ${colors.thunderhead};
+            display: flex;
+            justify-content: flex-end;
+            margin: 0 auto;
+            border-radius: 20px;
+            border: solid white;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #78849E;
+            text-align: left;
+            padding-left: 25px;
+        }
+    }
 `
 
 class PhoneNumber extends React.Component {
@@ -37,6 +62,7 @@ class PhoneNumber extends React.Component {
   render() {
   return (
       <Body>
+      <PhoneDiv style={{minHeight: "600px"}}>
         <PhoneInput
           placeholder="Enter phone number"
             value={ this.state.phone }
@@ -44,7 +70,8 @@ class PhoneNumber extends React.Component {
                             <TransitionButton link='/info' text='NEXT STEP' />
               {/* Need the transition button here.
                   And it needs to not work unless a number is in. */}
-              <KeyPad />
+    {/*<KeyPad />*/}
+      </PhoneDiv>
       </Body>
   );
 };
