@@ -9,7 +9,7 @@ const EditProfile = props => {
   const [ text, setText ] = useState('');
   const [ imgurHash, setImgurHash] = useState('');
   const id = 1;
-  const clientID = null;
+  const clientID = 1;
 
 
   const driverEdit = () => {
@@ -72,7 +72,7 @@ const EditProfile = props => {
     console.log(changes);
   };
 
-  const makeRide = {
+  const makeRide = () => {
     console.log("Click!");
     // axios.post(`https://`);
   };
