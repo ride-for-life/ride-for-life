@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
 import {
@@ -45,33 +45,44 @@ const SignUpPage = props => {
   const [ price, setPrice ] = useState("");
   const [ result, setResult ] = useState("");
 
-  let { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
 
-  const driverSignUp = event => {
+  const driverSignUp = (event) => {
     event.preventDefault();
     const phoneContext = state.phoneNum.join("");
     const parsedPrice = parseInt(price);
-    const registrationWrapper = {
-      firstname: firstName,
-      lastname: lastName,
-      username: `${firstName}${lastName}${phoneContext}`,
-      phone: phoneContext,
-      email: phoneContext,
-      password: pass,
-      price: parsedPrice,
+    // const registrationWrapper = {
+    //   firstname: firstName,
+    //   lastname: lastName,
+    //   username: bracedRand,
+    //   phone: phoneContext,
+    //   email: phoneContext,
+    //   password: pass,
+    //   price: parsedPrice,
+    //   vehicle_type: "test"
+    // };
+    const registrationTester = {
+      firstname: 'Cool',
+      lastname: 'Guy',
+      username: `__${Math.random().toString().slice(2,19)}__`,
+      phone: `__${Math.random().toString().slice(2,19)}__`,
+      email: `__${Math.random().toString().slice(2,19)}__`,
+      password: 'password',
+      price: 100,
       vehicle_type: "test"
     };
-    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationWrapper)
-     .then(data => setResult(JSON.stringify(data)))
-     .catch(error => setResult(JSON.stringify(error)))
-  };
-
-
+    axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationTester)
+     .then(res => {
+       setResult(JSON.stringify(res));
+       dispatch({type: "loginSuccess", payload: res.data.token });
+     })
+     .catch(error => setResult(JSON.stringify(error)));
+  }; // driverSignUp function
 
   return (
     <Body>
-      <Container>
       {result}
+      <Container>
       <div>
         <SignUpButtons>
            <NavLink className = 'nav-link' to = '/'>Home</NavLink>

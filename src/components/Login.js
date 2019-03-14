@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from 'react-router-dom'
 import axios from "axios";
-import {UserContext } from './UserContext';
+import { UserContext } from './UserContext';
 import { WideCap, Input, Inputs, colors } from "./styles";
 import styled from 'styled-components';
 
@@ -56,7 +56,7 @@ const Login = props => {
         const data = await axios.get(
           `https://rideforlife.herokuapp.com/api/drivers`
         );
-        setResult(JSON.stringify(data));
+        console.log(data);
       };
       axiosGet();
     },
@@ -67,8 +67,11 @@ const Login = props => {
    event.preventDefault();
    const assembleQuery = { loginQuery: name , password:  pass  };
    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
-    .then(data => setResult(JSON.stringify(data)))
+    .then(res => {
+      dispatch({type: "loginSuccess", payload: res.data.token });
+      setResult(JSON.stringify(res))})
     .catch(error => setResult(JSON.stringify(error)))
+
     // so the next step is to take the token when it comes back, dispatch an update of "user is logged in" to Context, and then move to the Driver Profile page, use localstorage for the token for nnnnoooow maybe?
     // this needs protected route implementation
     // we need to start being able to put edit a driver's profile.
@@ -93,4 +96,3 @@ const Login = props => {
 };
 
 export default Login;
-
