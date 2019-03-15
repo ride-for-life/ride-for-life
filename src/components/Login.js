@@ -29,19 +29,6 @@ const Login = props => {
   const { state, dispatch } = useContext(UserContext);
   const id = 6;
 
- useEffect(
-    () => {
-      const axiosGet = async () => {
-        const data = await axios.get(
-          `https://rideforlife.herokuapp.com/api/drivers/`
-        );
-        console.log(data);
-      };
-      axiosGet();
-    },
-    []
-  );
-
  const driverLogin = (event) => {
    event.preventDefault();
    const assembleQuery = { loginQuery: name , password:  pass  };

@@ -33,11 +33,18 @@ const App = () => {
 
   useEffect(
     () => {
-      if (state.driverCache) {
-        console.log(state.driverCache);
+      dispatch({ type: "updateViewId", payload: 3 });
+    },
+    []
+  );
+
+  useEffect(
+    () => {
+      if (state.viewId) {
+        console.log(state.viewId);
       }
     },
-    [state.driverCache]
+    [state.viewId]
   );
 
 

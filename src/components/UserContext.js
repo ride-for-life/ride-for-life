@@ -1,11 +1,13 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
+import axios from 'axios';
 
 let UserContext = createContext();
 
 const initState = {
   inputPhoneNum: '',
   reactiveToken: '',
-  img: ''
+  img: '',
+  viewId: 1,
 };
 
 // set up logic for user updating
@@ -27,9 +29,12 @@ const reducer = (state,action) => {
       return { ...state, reactiveToken: action.payload }
     case "imageUpdate":
       console.log(action.payload);
-      return { ...state, img: action.payload};
+      return { ...state, img: action.payload };
     case "phoneUserUpdate":
       return { ...state, inputPhoneNum: action.payload };
+    case "riderAuth":
+      const newRide = action.payload.ride;
+      return { ...state, viewRide: newRide, reactiveToken: action.payload.token }
     case "cacheInit":
       const loadArray = action.payload.map(
         driver => [driver.driver_id, {...driver}]
@@ -50,6 +55,26 @@ const reducer = (state,action) => {
       return { ...state,
         driverArray: action.payload,
         driverCache: freshCache
+      }; // cacheInit
+    case "cacheSingleDriver":
+      const aTarget = action.cacheTarget;
+      const driverUpdate = action.payload;
+      const updatedCache = { ...state.driverCache }
+      Object.defineProperty(updatedCache, aTarget, {
+        value: {
+          ...driverUpdate
+        }
+      });
+      return {
+        ...state,
+        driverCache: updatedCache
+      } // cacheSingleDriver
+    case "updateViewId":
+
+      return {
+        ...state,
+        viewId: action.payload,
+        driverLookup: action.payload
       };
     default:
       return state
@@ -59,6 +84,19 @@ const reducer = (state,action) => {
 const UserContextProvider = props => {
   const [state, dispatch] = useReducer(reducer, initState);
   const value = { state, dispatch };
+
+  useEffect(
+    () => {
+      if (state.driverLookup) {
+        const cacheThisDriver = async (fetchId) => {
+          const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${fetchId}`)
+          dispatch({ type: "cacheSingleDriver", cacheTarget: fetchId, payload: res.data })
+        };
+        cacheThisDriver(state.driverLookup);
+      }
+    },
+    [state.driverLookup]
+  );
 
   return (
     <UserContext.Provider value={value}> {props.children} </UserContext.Provider>

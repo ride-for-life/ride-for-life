@@ -5,6 +5,7 @@ import { ReactComponent as StarSVG} from "./star.svg";
 import { colors, WideCap, fontFamily, DriverDiv, NavStyle } from "../styles";
 import styled from 'styled-components';
 import { authxios } from '../auth';
+import { randFiller } from '../dice';
 
 const Body = styled.div`
   width: 100%;
@@ -94,16 +95,38 @@ const SubmitRating = props => {
   const [ text, setText ] = useState("");
   const [ stars, setStars ] = useState(5);
   const { state, dispatch } = useContext(UserContext);
+  const [ result, setResult ] = useState("");
+
+  const makeRide = () => {
+    const requiredData = {
+      "driver_id": 1,
+      "user_phone": `5555`,
+      "firstname:": `${randFiller(15)}`,
+      "start_location": `${randFiller(15)}`,
+      "end_location": `${randFiller(15)}`,
+    };
+    axios.post(`https://rideforlife.herokuapp.com/api/drivers/create-ride`, requiredData)
+      .then(res => {
+        console.log(res);
+        dispatch({
+          type: "riderAuth", payload: res.data
+        })}
+      )
+      .catch(err => {
+        console.log(err)});
+  };
 
   const maxStars = 5;
 
   const leaveReview = event => {
     event.preventDefault();
-    const testReview = { "user_id": 1, "driver_id": 1, "review_content": "Id est prima erant nobis. Ut odio alia mediocritatem mel.", "rating": 3 };
-    const id = 1;
-    authxios(state.reactiveToken).post(`https://rideforlife.herokuapp.com/api/drivers/${id}/review`, testReview)
-      .then(res => setText(res))
-      .catch(err => setText(err));
+    console.log(state.viewRide);
+    const theRide = state.viewRide;
+    const reviewWrapper = { ...theRide, rating: stars, review_content: text, user_phone: '5555', user_id: 21 };
+    console.log(reviewWrapper);
+    authxios(state.reactiveToken).post(`https://rideforlife.herokuapp.com/api/drivers/${reviewWrapper.driver_id}/review`, reviewWrapper)
+      .then(res => setResult(res))
+      .catch(err => setResult(err));
   };
 
 //   {
@@ -116,6 +139,7 @@ const SubmitRating = props => {
 // so I can get around the ugly no-image display thing here by setting an && logic on top of the img, right? All I have to do is make sure that if the prop I get is an empty string, I return mu.
   return (
       <Body>
+      {JSON.stringify(result)}
       <DriverDiv>
         <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
       <Container>
@@ -124,6 +148,7 @@ const SubmitRating = props => {
         <h2>{props.name || "Name"}</h2>
         <h3>{props.loc || "Location"}</h3>
       </div>
+      <WideCap onClick={makeRide} background={colors.antimatter}>Fake A Ride</WideCap>
     <Form onSubmit={leaveReview}>
       <h1>Details</h1>
       <h3>Describe your trip</h3>
@@ -135,7 +160,7 @@ const SubmitRating = props => {
                                        onClick={(event) => setStars(val + 1)} />)}
       </div>
     {/*<input type="text" name="stars" onChange={(event) => setStars(event.target.value)} />*/}
-      <WideCap background={colors.antimatter}>SUBMIT RATING</WideCap>
+      <WideCap type="submit" background={colors.antimatter}>SUBMIT RATING</WideCap>
     </Form>
       </Container>
       </DriverDiv>

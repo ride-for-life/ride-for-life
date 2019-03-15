@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
 import TransitionButton from '../TransitionButton'
@@ -30,13 +30,13 @@ const SignUpPage = props => {
 
   const driverSignUp = (event) => {
     event.preventDefault();
-    const phoneContext = state.inputPhoneNum.join("");
+    const phoneNumFromContext = state.inputPhoneNum;
     const parsedPrice = parseInt(price);
     const registrationWrapper = {
       firstname: firstName,
       lastname: lastName,
       username: `__${randFiller(16)}__`,
-      phone: `${firstName}${lastName}`,
+      phone: phoneNumFromContext,
       email: `__${randFiller(16)}__`,
       password: pass,
       price: parsedPrice,

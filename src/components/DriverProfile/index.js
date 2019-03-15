@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from '../UserContext';
 import axios from "axios";
 import { DriverDiv, colors, NavStyle } from "../styles";
 import DriverName from "./DriverName";
@@ -14,10 +15,13 @@ const Body = styled.div`
   background-image: linear-gradient(${colors.white}, ${colors.thunderhead + '09'})
 `
 
-const DriverProfile = () => {
+const DriverProfile = (props) => {
+  const { state, dispatch } = useContext(UserContext);
+  const driver = state.driverCache[(state.viewId)];
 
-   const [driver, setDriver] = useState({});
-    console.log(driver);
+
+
+   if (driver) {
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location;
    const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : 'This driver does not yet have a biography'; // FIXME: not real
@@ -25,19 +29,6 @@ const DriverProfile = () => {
    const rides = driver.total_rides || "0";
    const reviews = driver.reviews ? driver.reviews.length : 0;
    const avgRating = (driver.reviews && driver.reviews.length > 0) ? (driver.reviews.reduce((acc, d) => acc + d.rating, 0) / driver.reviews.length) : 0;
-    
-
-  useEffect(
-    () => {
-      const axiosGet = async () => {
-        const id = 1;
-        const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${id}`)
-        setDriver(res.data);
-      };
-      axiosGet();
-    },
-    []
-  );
 
 
 return (
@@ -52,6 +43,10 @@ return (
       </DriverDiv>
     </Body>
 )
+}
+else {
+  return <h1>Whoops!</h1>
+}
 };
 
 export default DriverProfile;
