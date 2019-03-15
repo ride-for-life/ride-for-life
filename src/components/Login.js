@@ -33,7 +33,7 @@ const Login = props => {
     () => {
       const axiosGet = async () => {
         const data = await axios.get(
-          `https://rideforlife.herokuapp.com/api/drivers/${id}`
+          `https://rideforlife.herokuapp.com/api/drivers/`
         );
         console.log(data);
       };

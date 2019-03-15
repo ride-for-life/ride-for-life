@@ -36,7 +36,7 @@ const SignUpPage = props => {
       firstname: firstName,
       lastname: lastName,
       username: `__${Math.random().toString().slice(2,19)}__`,
-      phone: `__${Math.random().toString().slice(2,19)}__`,
+      phone: `${firstName}${lastName}`,
       email: `__${Math.random().toString().slice(2,19)}__`,
       password: pass,
       price: parsedPrice,
@@ -66,27 +66,17 @@ const SignUpPage = props => {
 
            <form onSubmit={driverSignUp}>
            <Inputs>
-<<<<<<< HEAD
              <Input  style = {{color: "green"}}
                      type="text"
                      name="firstName"
-=======
-             <Input  type="text"
-                     name="lastName"
->>>>>>> fef7b9ae36e8e511102b733ff647bb4d645d55fa
                      value={firstName}
 
                      onChange={event => setFirstName(event.target.value)}
-                     placeholder="First"
               />
-<<<<<<< HEAD
+
               <Input  style = {{color: "green"}}
                       type="text"
                       name="lastName"
-=======
-              <Input  type="text"
-                      name="firstName"
->>>>>>> fef7b9ae36e8e511102b733ff647bb4d645d55fa
                       value={lastName}
 
                       onChange={event => setLastName(event.target.value)}

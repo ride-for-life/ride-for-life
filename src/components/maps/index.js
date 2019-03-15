@@ -7,7 +7,7 @@ import { colors, fontFamily, NavStyle, OverlayDiv } from '../styles';
 import TransitionButton from '../TransitionButton.js';
 
 const YourLocation = styled.div`
-    pointer-events: all;        
+    pointer-events: all;
     width: 550px;
     max-width: 100%;
     background: ${colors.white};
@@ -91,7 +91,3 @@ return (
 };
 
 export default SearchDrivers;
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c137d45a18a3d65bcd68e52701dfdaa2efc84d1
