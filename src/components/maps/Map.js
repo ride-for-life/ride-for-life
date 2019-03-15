@@ -14,8 +14,8 @@ const mapStyles = {
     height: '100%',
     margin: '0',
     top: 0,
-    // zIndex: 0, // needed to clickthrough to work
-    zIndex: -1,
+    zIndex: 0, // needed to clickthrough to work
+    // zIndex: -1,
   }
 };
 

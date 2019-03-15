@@ -139,10 +139,11 @@ return (
     <div className="loc-close">X</div>
   </YourLocation>
     <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+    <TransitionButton style={{pointerEvents: "all"}} background={colors.antimatter} link='/confirm-pickup' text='Call an Ambulance'/>
     {drivers ? 
      <CarouselProvider style={{pointerEvents: "all", width: "800px", height: "260px", maxWidth: "100%", marginBottom: "50px"}}
         naturalSlideWidth={50}
-        naturalSlideHeight={100}
+        naturalSlideHeight={80}
         visibleSlides={3}
         totalSlides={drivers.length}>
         <Slider>
@@ -159,7 +160,6 @@ return (
      : 
      <h1>Loading</h1>
     }
-    <TransitionButton style={{pointerEvents: "all"}} background={colors.antimatter} link='/confirm-pickup' text='Call an Ambulance'/>
     </div>
     </OverlayDiv>
         <MapContainer drivers = {drivers}/>
