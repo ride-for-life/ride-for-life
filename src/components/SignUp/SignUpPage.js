@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 import '../../index.css';
 import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer, OverlayDiv } from '../styles';
+import { randFiller } from '../dice';
 
 const Body = styled.div`
   overflow: hidden;
@@ -25,7 +26,6 @@ const SignUpPage = props => {
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
   const [ result, setResult ] = useState("");
-
   const { state, dispatch } = useContext(UserContext);
 
   const driverSignUp = (event) => {
@@ -35,9 +35,9 @@ const SignUpPage = props => {
     const registrationWrapper = {
       firstname: firstName,
       lastname: lastName,
-      username: `__${Math.random().toString().slice(2,19)}__`,
+      username: `__${randFiller(16)}__`,
       phone: `${firstName}${lastName}`,
-      email: `__${Math.random().toString().slice(2,19)}__`,
+      email: `__${randFiller(16)}__`,
       password: pass,
       price: parsedPrice,
       vehicle_type: "mu",
