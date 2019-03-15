@@ -54,6 +54,7 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    location: [],
     drivers: [{name:1, loc: {lat: 38.5633565, lng: -121.6708225}},
               {name:2, loc: {lat: 38.3633565, lng: -121.6908225}},
               {name:3, loc: {lat: 38.4133565, lng: -121.7108225}},
@@ -62,6 +63,14 @@ export class MapContainer extends Component {
             ,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]
   }
 
+  componentDidMount = () => {
+
+    let lat = Object.values(this.props.drivers);
+    console.log(`testing lat = `, lat)
+    this.setState ({ location: {lat: 38.3633565, lng: -121.0708225} });         //this.props.drivers[0].location.split(", ").map(c => parseFloat(c))});
+    var destinationB = new this.props.google.maps.LatLng(40.087692, -122.421150);
+    console.log('Testing destination.... :', destinationB.lat())
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState ({
@@ -83,6 +92,10 @@ export class MapContainer extends Component {
       console.log( parseFloat(this.props.drivers[0].location ));
       console.log(this.props.drivers[0].location.replace(',',' '));
       console.log( parseFloat(this.props.drivers[0].location.replace(',',' '))  )
+      console.log(this.props.drivers[0].location.split(", ").map(c => parseFloat(c)))
+      
+      console.log(typeof this.state.location)
+      //console.log(this.state.location[0]. this.state.location[1]);
     };
 
   render() {
@@ -103,6 +116,8 @@ export class MapContainer extends Component {
 
         ><div><h2>{this.state.selectedPlace.name}</h2></div>
        </InfoWindow>
+       <Marker onClick={this.onMarkerClick} name={'Test DRIVER'} position = "Fairfield, CA" />
+
 
        { /** Generate markers for all drivers NOTE: DRIVERS ARE NOT THE REAL DRIVERS OBTAINED FROM SERVER **/}
         {Object.values(this.props.drivers).map( (driver , index) => <Marker onClick={this.onMarkerClick} name={`Driver ${driver.firstname}`} position = {this.state.drivers[index].loc}/>
@@ -129,5 +144,5 @@ export class MapContainer extends Component {
 
 console.log(APIkey);
 export default GoogleApiWrapper({
-  apiKey: APIkey
+  apiKey: 'AIzaSyBzxpyLvS1R9t34JYCfCEoiWfUUpM70SbA'
 })(MapContainer);
