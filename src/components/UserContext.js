@@ -106,14 +106,7 @@ const UserContextProvider = props => {
     []
   ); // can from here on use state.driverCache[driver_id#] to refer to any driver by id!
 
-  useEffect(
-    () => {
-      if (state.loggedDriverId) {
-        props.history.push("/my-profile")
-      }
-    },
-    [state.loggedDriverId]
-  );
+
 
 
   useEffect(

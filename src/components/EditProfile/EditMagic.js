@@ -10,7 +10,7 @@ import { DriverDiv, colors, NavStyle } from "../styles";
 import DriverStats from "../DriverProfile/DriverStats";
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
-import MagicName from './MagicName'
+import MagicName from './MagicName';
 
 
 const Body = styled.div`
