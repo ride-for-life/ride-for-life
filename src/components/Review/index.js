@@ -124,7 +124,7 @@ const SubmitRating = props => {
     const theRide = state.viewRide;
     const reviewWrapper = { ...theRide, rating: stars, review_content: text, user_phone: '5555', user_id: 21 };
     console.log(reviewWrapper);
-    authxios(state.reactiveToken).post(`https://rideforlife.herokuapp.com/api/drivers/${reviewWrapper.driver_id}/review`, reviewWrapper)
+    authxios(state.loggedToken).post(`https://rideforlife.herokuapp.com/api/drivers/${reviewWrapper.driver_id}/review`, reviewWrapper)
       .then(res => setResult(res))
       .catch(err => setResult(err));
   };

@@ -23,20 +23,18 @@ const Form = styled.form`
 `;
 
 const Login = props => {
-  const [name, setName] = useState("cool?");
-  const [pass, setPass] = useState("awesome!");
-  const [result, setResult] = useState("Awaiting results?");
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
   const { state, dispatch } = useContext(UserContext);
-  const id = 6;
 
  const driverLogin = (event) => {
    event.preventDefault();
    const assembleQuery = { loginQuery: name , password:  pass  };
    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
     .then(res => {
-      dispatch({type: "loginSuccess", payload: res.data.token });
-      setResult(JSON.stringify(res))})
-    .catch(error => setResult(JSON.stringify(error)))
+      dispatch({type: "driverLoginSuccess", payload: res.data });
+      props.history.push('/my-profile')})
+    .catch(error => console.log(error))
 
     // so the next step is to take the token when it comes back, dispatch an update of "user is logged in" to Context, and then move to the Driver Profile page, use localstorage for the token for nnnnoooow maybe?
     // this needs protected route implementation
@@ -50,13 +48,10 @@ const Login = props => {
      <FormContainer style={{paddingTop: "10%"}}>
            <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
    <Form>
-    <Input type="text" onChange={event => setName(event.target.value)} value={name} />
-    <Input type="password" onChange={event => setPass(event.target.value)} value={pass} />
+    <Input type="text" onChange={event => setName(event.target.value)} placeholder="Email or phone number?" value={name} />
+    <Input type="password" placeholder="Password?" onChange={event => setPass(event.target.value)} value={pass} />
     <WideCap onClick={driverLogin} background={colors.thunderhead}>LOGIN</WideCap>
    </Form>
-    <p>{name}</p>
-    <p>{pass}</p>
-    <p>{result}</p>
      </FormContainer>
    </Body>
  );

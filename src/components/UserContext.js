@@ -5,9 +5,14 @@ let UserContext = createContext();
 
 const initState = {
   inputPhoneNum: '',
-  reactiveToken: '',
   img: '',
   viewId: 1,
+  loggedToken: '',
+  loggedDriverId: null,
+  loggedUserId: null,
+  reviewer: false,
+  editing: {},
+  recache: 0
 };
 
 // set up logic for user updating
@@ -17,7 +22,7 @@ const reducer = (state,action) => {
     case "reset":
       return { ...state, inputPhoneNum: '' }
     case "numPush":
-        const newPushNumber = state.inputPhoneNum + action.payload
+        const newPushNumber = state.inputPhoneNum + action.payload;
         console.log(newPushNumber);
         return {...state, inputPhoneNum: newPushNumber }
     case "numPop":
@@ -26,15 +31,14 @@ const reducer = (state,action) => {
       return { ...state, inputPhoneNum: newPopNumber };
     case "loginSuccess":
       console.log(action.payload);
-      return { ...state, reactiveToken: action.payload }
+      return { ...state, loggedToken: action.payload }
     case "imageUpdate":
-      console.log(action.payload);
-      return { ...state, img: action.payload };
+      return { ...state, recache: state.recache+1  };
     case "phoneUserUpdate":
       return { ...state, inputPhoneNum: action.payload };
     case "riderAuth":
       const newRide = action.payload.ride;
-      return { ...state, viewRide: newRide, reactiveToken: action.payload.token }
+      return { ...state, viewRide: newRide, loggedToken: action.payload.token }
     case "cacheInit":
       const loadArray = action.payload.map(
         driver => [driver.driver_id, {...driver}]
@@ -59,22 +63,32 @@ const reducer = (state,action) => {
     case "cacheSingleDriver":
       const aTarget = action.cacheTarget;
       const driverUpdate = action.payload;
-      const updatedCache = { ...state.driverCache }
-      Object.defineProperty(updatedCache, aTarget, {
-        value: {
-          ...driverUpdate
-        }
-      });
+      const updateCache = JSON.parse(JSON.stringify(state.driverCache));
+      console.log(updateCache);
+      console.log(driverUpdate);
+      console.log(aTarget);
+      // Object.defineProperty(updatedCache, aTarget, {
+      //   value: {
+      //     ...driverUpdate
+      //   }
+      // });
+      // Isn't working?
       return {
         ...state,
-        driverCache: updatedCache
+        testing: "yes"
       } // cacheSingleDriver
     case "updateViewId":
-
       return {
         ...state,
         viewId: action.payload,
         driverLookup: action.payload
+      };
+    case "driverLoginSuccess":
+      return {
+        ...state,
+        loggedToken: action.payload.token,
+        loggedDriverId: action.payload.driver_id,
+        driverLookup: action.payload.driver_id
       };
     default:
       return state
@@ -93,23 +107,19 @@ const UserContextProvider = props => {
         };
       cacheInitGet();
     },
-    []
+    [state.recache]
   ); // can from here on use state.driverCache[driver_id#] to refer to any driver by id!
 
-  useEffect(
-    () => {
-      dispatch({ type: "updateViewId", payload: 3 });
-    },
-    []
-  );
+
+
 
   useEffect(
     () => {
-      if (state.viewId) {
-        console.log(state.viewId);
+      if (state.testing) {
+        console.log(state.driverCache);
       }
     },
-    [state.viewId]
+    [state.testing]
   );
 
   useEffect(
@@ -120,6 +130,7 @@ const UserContextProvider = props => {
           dispatch({ type: "cacheSingleDriver", cacheTarget: fetchId, payload: res.data })
         };
         cacheThisDriver(state.driverLookup);
+        console.log(state.driverLookup);
       }
     },
     [state.driverLookup]
