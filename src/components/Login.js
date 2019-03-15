@@ -60,7 +60,7 @@ const Login = props => {
 
  return (
    <Body>
-     <FormContainer style={{paddingTop: "30%"}}>
+     <FormContainer style={{paddingTop: "10%"}}>
            <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
    <Form>
     <Input type="text" onChange={event => setName(event.target.value)} value={name} />

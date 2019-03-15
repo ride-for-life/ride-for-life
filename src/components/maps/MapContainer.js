@@ -9,7 +9,6 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 // import {greatPlaceStyle} from './my_great_place_styles.js';
 import CurrentLocation from './Map';
 
-
 const APIkey = process.env.REACT_APP_API_KEY;
 
 // const mapStyles = {
@@ -88,6 +87,7 @@ export class MapContainer extends Component {
   render() {
     return (
       <div>
+
            { /** Map loaded and centered on browser's current location **/}
       <CurrentLocation centerAroundCurrentLocation = {true} google={this.props.google} drivers = {this.props.drivers}   >
  
