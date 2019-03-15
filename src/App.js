@@ -29,7 +29,7 @@ const App = () => {
       cacheInitGet();
     },
     []
-  );
+  ); // can from here on use state.driverCache[driver_id#] to refer to any driver by id!
 
   useEffect(
     () => {

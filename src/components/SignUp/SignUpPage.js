@@ -30,7 +30,7 @@ const SignUpPage = props => {
 
   const driverSignUp = (event) => {
     event.preventDefault();
-    const phoneContext = state.phoneNum.join("");
+    const phoneContext = state.inputPhoneNum.join("");
     const parsedPrice = parseInt(price);
     const registrationWrapper = {
       firstname: firstName,
