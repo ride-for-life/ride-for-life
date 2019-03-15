@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import '../../index.css';
-import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer } from '../styles';
+import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer, OverlayDiv } from '../styles';
 
 const Body = styled.div`
   overflow: hidden;
@@ -59,8 +59,6 @@ const SignUpPage = props => {
         <SignUpButtons>
            <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
 
-           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} color={colors.thunderhead} background={colors.white}>SIGN IN </Button>
-           <Button style={{border: 'none', height: '50px', borderRadius: '18px'}} background={colors.forest}>SIGN UP</Button>
         </SignUpButtons>
 
 
@@ -108,6 +106,10 @@ const SignUpPage = props => {
                </Inputs>
             </form>
 
+      <OverlayDiv style={{minHeight: "200px", pointerEvents: "all"}}>
+      <h2 style={{color: colors.dusk}}>Already have an account?</h2>
+      <TransitionButton link="/login" background={colors.thunderhead} text="LOGIN"> </TransitionButton>
+    </OverlayDiv>
       </div>
       </FormContainer>
     </Body>
