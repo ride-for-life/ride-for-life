@@ -19,8 +19,14 @@ export const DriverNameDiv = styled.div`
     background: ${colors.storm};
     background-image: linear-gradient(${colors.storm}, ${colors.evening});
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
     img {
-      object-fit: cover;
+      object-fit: contain;
+      max-height: 200px;
+      max-width: 200px;
     }
   }
   h1 {
@@ -109,4 +115,4 @@ export const DriverBioDiv = styled.div`
       cursor: pointer;
     }
   }
-` 
+`

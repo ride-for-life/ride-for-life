@@ -10,6 +10,7 @@ import DriverStats from "../DriverProfile/DriverStats";
 import { renderComponent } from "recompose";
 import styled from 'styled-components';
 import MagicName from './MagicName';
+import { DriverBioDiv } from "../styles";
 
 
 const Body = styled.div`
@@ -26,7 +27,7 @@ const EditMagic = props => {
 
   const [ bio, setBio ] = useState('');
 
-  let chameleonValue;
+  console.log(props.recache);
 
 
 
@@ -72,7 +73,8 @@ const EditMagic = props => {
   const rides = driver.total_rides || "0";
   const reviews = driver.reviews ? driver.reviews.length : 0;
   const avgRating = (driver.reviews && driver.reviews.length > 0) ?  (driver.reviews.reduce((acc, d) => acc + d.rating, 0) / driver.reviews.length) : 0;
-  const driverpic = (driver.vehicle_type !== 'mu') ? driver.vehicle_type : ''
+  const driverCORS = (driver.vehicle_type !== 'mu') ? true : false
+  const driverpic = driver.vehicle_type;
 
 
 
@@ -80,12 +82,10 @@ const EditMagic = props => {
       <Body>
       <DriverDiv>
        <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
-       <MagicName name={driver.firstname} location={location} driverpic={driverpic} />
+       <MagicName firstname={driver.firstname} location={location} cors={driverCORS} driverpic={driverpic} />
 
        <DriverStats driver={driver} rides={rides} reviews={reviews} />
-       <DriverBio name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating} />
-
-
+       <DriverBio driverpic='' name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating} />
       </DriverDiv>
       </Body>
   )

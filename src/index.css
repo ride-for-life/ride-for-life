@@ -32,3 +32,12 @@ code {
     font-family: Montserrat;
 
 }
+
+
+#root {
+  box-sizing: border-box;
+};
+
+* {
+  box-sizing: inherit;
+}

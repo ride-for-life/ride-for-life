@@ -36,7 +36,7 @@ const DriverLogic = (props) => {
         <DriverName name={drivername} location={location} driverpic={driverpic} />
 
         <DriverStats driver={driver} rides={rides} reviews={reviews}/>
-        <DriverBio name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating}/>
+        <DriverBio driverpic={driverpic} name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating}/>
 
       </DriverDiv>
     </Body>

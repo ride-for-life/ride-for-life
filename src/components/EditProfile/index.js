@@ -7,7 +7,7 @@ const EditProfile = props => {
 
   return (
     <div>
-      <EditMagic driverCache={state.driverCache} loggedDriverId={state.loggedDriverId} />
+      <EditMagic driverCache={state.driverCache} loggedDriverId={state.loggedDriverId} recache={state.recache} />
     </div>
   )
 }

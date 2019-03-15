@@ -1,7 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
-import { DriverNameDiv } from "../styles";
+import { DriverNameDiv, DriverBioDiv } from "../styles";
 import { imgxios, authxios } from '../auth';
 import { UserContext } from '../UserContext';
+import styled from 'styled-components';
+
+const RestrainInput = styled.input`
+  box-sizing: border-box;
+  display: block;
+  margin: 5px;
+`;
+
+const RestrainButton = styled.button`
+  margin: 5px;
+  display: block;
+  box-sizing: border-box;
+`
 
 const MagicName = props => {
   const [ imgurLink, setImgurLink ] = useState('');
@@ -33,7 +46,7 @@ const MagicName = props => {
     () => {
       console.log(imgurLink);
       if (imgurLink) {
-      const axiosGet = async () => {
+      const axiosPut = async () => {
         const changes = {
           vehicle_type: imgurLink
         };
@@ -41,23 +54,20 @@ const MagicName = props => {
         const myId = state.loggedDriverId
         authxios(myToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes);
       };
-      axiosGet();
+      axiosPut();
     }},
     [imgurLink]
   ); // Why am I using useEffect here? Just refactor this to a function, you silly goose.
 
   return (
    <DriverNameDiv>
-      <div className="driver-img">
-
-      </div>
-      <details>
-      <summary><p>Change?</p></summary>
-      <img src={props.driverpic} alt={props.firstname} /><input type="file" onChange={fileSelect} />
-      <button onClick={fileUpload}> Upload File? </button>
-      </details>
-      <label><h1 >{props.name}</h1></label>
-      <h2>{props.location}</h2>
+     <div className="driver-img">
+       {props.cors && <img src={props.driverpic} crossorigin="anonymous" alt={props.firstname} />}
+     </div>
+     <RestrainInput type="file" onChange={fileSelect} />
+     <RestrainButton onClick={fileUpload}> Upload File? </RestrainButton>
+     <h1>{props.firstname}</h1>
+     <h2>{props.location}</h2>
    </DriverNameDiv>
  )
 };

@@ -16,7 +16,7 @@ const DriverBio = props => {
    <DriverBioDiv>
      <div className="caret">V</div>
      <div className="driver-heading">
-         <img src='' alt={props.name} />
+         <img src={props.driverpic} alt={props.name} />
          <div>
              <h3>{props.name}</h3>
              <p>{props.driverFor}</p>

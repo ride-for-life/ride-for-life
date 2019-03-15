@@ -11,7 +11,8 @@ const initState = {
   loggedDriverId: null,
   loggedUserId: null,
   reviewer: false,
-  editing: {}
+  editing: {},
+  recache: 0
 };
 
 // set up logic for user updating
@@ -32,8 +33,7 @@ const reducer = (state,action) => {
       console.log(action.payload);
       return { ...state, loggedToken: action.payload }
     case "imageUpdate":
-      console.log(action.payload);
-      return { ...state, img: action.payload };
+      return { ...state, recache: state.recache+1  };
     case "phoneUserUpdate":
       return { ...state, inputPhoneNum: action.payload };
     case "riderAuth":
@@ -107,7 +107,7 @@ const UserContextProvider = props => {
         };
       cacheInitGet();
     },
-    []
+    [state.recache]
   ); // can from here on use state.driverCache[driver_id#] to refer to any driver by id!
 
 
