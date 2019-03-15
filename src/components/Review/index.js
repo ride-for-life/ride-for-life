@@ -139,7 +139,6 @@ const SubmitRating = props => {
 // so I can get around the ugly no-image display thing here by setting an && logic on top of the img, right? All I have to do is make sure that if the prop I get is an empty string, I return mu.
   return (
       <Body>
-      {JSON.stringify(result)}
       <DriverDiv>
         <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
       <Container>
@@ -148,7 +147,6 @@ const SubmitRating = props => {
         <h2>{props.name || "Name"}</h2>
         <h3>{props.loc || "Location"}</h3>
       </div>
-      <WideCap onClick={makeRide} background={colors.antimatter}>Fake A Ride</WideCap>
     <Form onSubmit={leaveReview}>
       <h1>Details</h1>
       <h3>Describe your trip</h3>

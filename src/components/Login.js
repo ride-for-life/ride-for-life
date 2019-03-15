@@ -33,8 +33,9 @@ const Login = props => {
    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
     .then(res => {
       dispatch({type: "driverLoginSuccess", payload: res.data });
-      props.history.push('/my-profile')})
+      setTimeout(props.history.push('/my-profile'), 1000);})
     .catch(error => console.log(error))
+
 
     // so the next step is to take the token when it comes back, dispatch an update of "user is logged in" to Context, and then move to the Driver Profile page, use localstorage for the token for nnnnoooow maybe?
     // this needs protected route implementation

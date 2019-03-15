@@ -25,7 +25,6 @@ const SignUpPage = props => {
   const [ pass, setPass ] = useState("");
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
-  const [ result, setResult ] = useState("");
   const { state, dispatch } = useContext(UserContext);
 
   const driverSignUp = (event) => {
@@ -45,15 +44,15 @@ const SignUpPage = props => {
     };
     axios.post('https://rideforlife.herokuapp.com/api/drivers/register', registrationWrapper)
      .then(res => {
-       setResult(JSON.stringify(res));
-       dispatch({type: "loginSuccess", payload: res.data.token });
+       console.log(res);
+       dispatch({type: "driverRegisterSuccess", payload: res.data });
+       setTimeout(props.history.push('/my-profile'), 1000);
      })
-     .catch(error => setResult(JSON.stringify(error)));
+     .catch(error => console.log(error));
   }; // driverSignUp function
 
   return (
     <Body>
-      {result}
       <FormContainer>
       <div>
         <SignUpButtons>

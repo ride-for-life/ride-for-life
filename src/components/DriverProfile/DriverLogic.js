@@ -16,8 +16,17 @@ const Body = styled.div`
 `
 
 const DriverLogic = (props) => {
+    console.log(props.recache);
 
-  const driver = props.driverCache && props.viewId ? props.driverCache[(props.viewId)] : null;
+  const driver =
+    props.myCache && props.viewId ?
+      props.myCache [(props.viewId)] ?
+        props.myCache [(props.viewId)] :
+        props.myCache ?
+          props.myCache :
+          null
+      : null
+
   if (driver) {
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location;

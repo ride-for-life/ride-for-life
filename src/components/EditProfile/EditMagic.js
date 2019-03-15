@@ -64,8 +64,16 @@ const EditMagic = props => {
       .catch(error => {console.log(error)})
   };
 
-  const driver = props.driverCache && props.loggedDriverId ? props.driverCache[(props.loggedDriverId)] : null
+  const driver =
+  props.myCache && state.loggedDriverId ?
+    props.myCache [(state.loggedDriverId)] ?
+      props.myCache [(state.loggedDriverId)] :
+      props.myCache ?
+        props.myCache :
+        null
+    : null
 
+    if (driver) {
   const drivername = `${driver.firstname} ${driver.lastname}`;
   const location = driver.location;
   const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : 'This driver does not yet have a biography'; // FIXME: Oh, it's about to be!
@@ -89,6 +97,11 @@ const EditMagic = props => {
       </DriverDiv>
       </Body>
   )
+} else {
+  return (
+    <p>Whoops!</p>
+  );
+}
 }
 
 export default EditMagic;

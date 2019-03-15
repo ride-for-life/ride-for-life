@@ -58,24 +58,21 @@ const reducer = (state,action) => {
       });
       return { ...state,
         driverArray: action.payload,
-        driverCache: freshCache
+        driverCache: freshCache,
+        driverSingle: null
       }; // cacheInit
     case "cacheSingleDriver":
       const aTarget = action.cacheTarget;
       const driverUpdate = action.payload;
-      const updateCache = JSON.parse(JSON.stringify(state.driverCache));
-      console.log(updateCache);
-      console.log(driverUpdate);
-      console.log(aTarget);
-      // Object.defineProperty(updatedCache, aTarget, {
-      //   value: {
-      //     ...driverUpdate
-      //   }
-      // });
-      // Isn't working?
+      const singleCache = {};
+      Object.defineProperty(singleCache, aTarget, {
+        value: {
+          ...driverUpdate
+        }
+      });
       return {
         ...state,
-        testing: "yes"
+        singleCache: singleCache
       } // cacheSingleDriver
     case "updateViewId":
       return {
@@ -90,6 +87,14 @@ const reducer = (state,action) => {
         loggedDriverId: action.payload.driver_id,
         driverLookup: action.payload.driver_id
       };
+    case "driverRegisterSuccess":
+      console.log(action.payload);
+      return {
+        ...state,
+        loggedDriverId: action.payload.driver.driver_id,
+        loggedToken: action.payload.token,
+        driverLookup: action.payload.driver.driver_id
+      }
     default:
       return state
   };
