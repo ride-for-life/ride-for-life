@@ -37,7 +37,9 @@ const MagicName = props => {
         const changes = {
           vehicle_type: imgurLink
         };
-        authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedId}`, changes);
+        const myToken = state.loggedToken;
+        const myId = state.loggedDriverId
+        authxios(myToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes);
       };
       axiosGet();
     }},
