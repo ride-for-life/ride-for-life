@@ -67,10 +67,9 @@ const SearchDrivers = () => {
       const axiosGet = async () => {
        const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`)
         setDrivers(res.data);
-
-      };
+        };
       axiosGet();
-      console.log('Drivers object : ', drivers);
+      console.log('Drivers object is : ', drivers);
     },
     []
   );
@@ -92,3 +91,7 @@ return (
 };
 
 export default SearchDrivers;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c137d45a18a3d65bcd68e52701dfdaa2efc84d1

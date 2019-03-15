@@ -62,17 +62,17 @@ export class CurrentLocation extends React.Component {
    // var destinationA = new this.props.google.maps.LatLng(34.887692, -121.921150);
     var destinationB = new this.props.google.maps.LatLng(40.087692, -122.421150);
     var destinationC = 'San mateo, CA';
-    var destination = new this.props.google.maps.LatLng(37.5633565, -121.4708225);
+    var destination = new this.props.google.maps.LatLng(40.087692, -122.421150);
     let davisLocation = {lat: 38.5633565, lng: -121.6708225};
-    let davisLocation1 = {lat: 38.7633565, lng: -121.4708225};
-    let davisLocation2 = {lat: 38.4633565, lng: -121.7708225};
+    let davisLocation1 = 'Fairfield, CA';
+    let davisLocation2 = "30th street sacramento, ca";
 
 
     var service = new this.props.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
   {
     origins: [/*origin1, origin2*/ origin],
-    destinations: [/*destinationA, */destinationB, destination, destinationC, davisLocation1, davisLocation, davisLocation2],
+    destinations: [/*destinationA, */destinationB, destination, destinationC, davisLocation1, davisLocation, davisLocation2, ],
     travelMode: 'DRIVING',
     unitSystem: this.props.google.maps.UnitSystem.METRIC,
     avoidHighways: false,
