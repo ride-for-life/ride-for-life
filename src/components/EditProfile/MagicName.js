@@ -35,7 +35,7 @@ const MagicName = props => {
       if (imgurLink) {
       const axiosGet = async () => {
         const changes = {
-          vehicle_type: {imgurLink}
+          vehicle_type: imgurLink
         };
         authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedId}`, changes);
       };

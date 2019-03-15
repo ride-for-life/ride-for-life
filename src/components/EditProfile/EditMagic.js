@@ -3,7 +3,6 @@ import axios from 'axios';
 import { authxios, imgxios } from '../auth/';
 import { UserContext } from '../UserContext';
 import { Input, Inputs } from '../styles';
-import DriverLogic from '../DriverProfile/DriverLogic';
 import DriverBio from '../DriverProfile/DriverLogic';
 import DriverName from '../DriverProfile/DriverName';
 import { DriverDiv, colors, NavStyle } from "../styles";
@@ -44,7 +43,7 @@ const EditMagic = props => {
   const finishEditing = event => {
     event.preventDefault();
     const changes = null;
-    authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedId}`, changes)
+    authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes)
       .then(res => { console.log(res) })
       .catch(err => { console.log(err) })
   };
@@ -66,7 +65,6 @@ const EditMagic = props => {
 
   const driver = props.driverCache && props.loggedDriverId ? props.driverCache[(props.loggedDriverId)] : null
 
-  if (driver) {
   const drivername = `${driver.firstname} ${driver.lastname}`;
   const location = driver.location;
   const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : 'This driver does not yet have a biography'; // FIXME: Oh, it's about to be!
@@ -78,9 +76,7 @@ const EditMagic = props => {
 
 
 
-
   return (
-    <div onClick={event => logClick(event)}>
       <Body>
       <DriverDiv>
        <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
@@ -89,15 +85,10 @@ const EditMagic = props => {
        <DriverStats driver={driver} rides={rides} reviews={reviews} />
        <DriverBio name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating} />
 
+
       </DriverDiv>
       </Body>
-    </div>
   )
-} else {
-  return (
-    <h1> Whoops! </h1>
-  )
-}
 }
 
 export default EditMagic;

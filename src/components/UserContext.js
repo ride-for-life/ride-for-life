@@ -63,15 +63,19 @@ const reducer = (state,action) => {
     case "cacheSingleDriver":
       const aTarget = action.cacheTarget;
       const driverUpdate = action.payload;
-      const updatedCache = { ...state.driverCache }
-      Object.defineProperty(updatedCache, aTarget, {
-        value: {
-          ...driverUpdate
-        }
-      });
+      const updateCache = JSON.parse(JSON.stringify(state.driverCache));
+      console.log(updateCache);
+      console.log(driverUpdate);
+      console.log(aTarget);
+      // Object.defineProperty(updatedCache, aTarget, {
+      //   value: {
+      //     ...driverUpdate
+      //   }
+      // });
+      // Isn't working?
       return {
         ...state,
-        driverCache: updatedCache
+        testing: "yes"
       } // cacheSingleDriver
     case "updateViewId":
       return {
@@ -111,11 +115,11 @@ const UserContextProvider = props => {
 
   useEffect(
     () => {
-      if (state.driverCache) {
+      if (state.testing) {
         console.log(state.driverCache);
       }
     },
-    [state.driverCache]
+    [state.testing]
   );
 
   useEffect(
