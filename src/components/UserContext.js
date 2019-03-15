@@ -32,6 +32,27 @@ const reducer = (state,action) => {
     case "imageUpdate":
       console.log(action.payload);
       return { ...state, img: action.payload};
+    case "cacheInit":
+      const loadArray = action.payload.map(
+        driver => [driver.driver_id, {...driver}]
+      );
+      const freshCache = {};
+      const cacheId = loadArray.map(array => {
+        return array[0]});
+      const cacheObjects = loadArray.map(array => {
+        return array[1]});
+
+      cacheId.forEach((id, index) => {
+        const spreadableObj = cacheObjects[index];
+        Object.defineProperty(freshCache, id, {
+          value: {
+            ...spreadableObj
+          }
+        })
+      });
+      console.log(freshCache);
+      return { ...state, driverCache: freshCache
+      };
     default:
       return state
   };
