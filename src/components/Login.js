@@ -34,7 +34,7 @@ const Login = props => {
    const assembleQuery = { loginQuery: name , password:  pass  };
    axios.post('https://rideforlife.herokuapp.com/api/drivers/login', assembleQuery)
     .then(res => {
-      dispatch({type: "loginSuccess", payload: res.data.token });
+      dispatch({type: "driverLoginSuccess", payload: res.data });
       setResult(JSON.stringify(res))})
     .catch(error => setResult(JSON.stringify(error)))
 

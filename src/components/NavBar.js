@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "../App.css";
 import SignUpPage from "./SignUp/SignUpPage";
 import { Route, NavLink } from "react-router-dom";
@@ -13,9 +13,11 @@ import SubmitRating from './Review/';
 import EditProfile from './EditProfile/';
 import ConfirmPickup from './ConfirmPickup'
 import SearchDrivers from "./maps/index";
+import { UserContext } from './UserContext';
 
 
-const NavBar = () => {
+const NavBar = props => {
+
  return (
    <div>
      <NavLink className="tab" to="/PhoneNumber">
@@ -53,6 +55,7 @@ const NavBar = () => {
      </NavLink>
 
 
+
      <Route exact path="/SignUp" component={SignUpPage} />
      <Route exact path="/Login" component={Login} />
      <Route exact path="/Phone1" component={Phone1} />
@@ -60,7 +63,7 @@ const NavBar = () => {
      <Route exact path="/DriverProfile" component={DriverProfile} />
      <Route exact path="/DriverProfile1" component={DriverProfile1} />
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
-     <Route exact path='/SearchResult' component = {SearchDrivers} />
+     <Route exact path='/SearchResult' component={SearchDrivers} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
      <Route exact path='/DriverEdit' component={EditProfile} />
      <Route exact path='/confirm-pickup' component={ConfirmPickup} />
