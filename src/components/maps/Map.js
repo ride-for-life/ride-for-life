@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './maps.css';
 // import { GoogleApiWrapper, Map, DirectionsService, InfoWindow, Marker } from 'google-maps-react';
 
 // import { useState, useEffect } from "react";
 // import { withRouter } from 'react-router-dom'
 // import axios from "axios";
-
-
-import './maps.css';
-
-
-
 
 const mapStyles = {
   map: {
@@ -19,9 +14,11 @@ const mapStyles = {
     height: '100%',
     margin: '0',
     top: 0,
-    zIndex: -1,
+    zIndex: 0, // needed to clickthrough to work
+    // zIndex: -1,
   }
 };
+
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
@@ -167,7 +164,7 @@ export class CurrentLocation extends React.Component {
     const style = Object.assign({}, mapStyles.map);
    
     return (
-      <div className = 'mapcontainer'>
+        <div className = 'mapcontainer'>
         <div style={style} ref="map">
           Loading map...
           
