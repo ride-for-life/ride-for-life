@@ -4,11 +4,17 @@ import { UserContext } from '../UserContext';
 
 const EditProfile = props => {
   const { state, dispatch } = useContext(UserContext);
+  const preferredCache =
+    state.singleCache ? 
+    state.singleCache :
+    state.driverCache ?
+    state.driverCache :
+    null
 
   return (
-    <div>
-      <EditMagic driverCache={state.driverCache} loggedDriverId={state.loggedDriverId} recache={state.recache} />
-    </div>
+    <>
+      { preferredCache ? <EditMagic myCache={preferredCache} loggedDriverId={state.loggedDriverId} recache={state.recache} /> : <p>Waiting...</p> }
+    </>
   )
 }
 
