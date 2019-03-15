@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
 import TransitionButton from '../TransitionButton'
@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 import '../../index.css';
 import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer, OverlayDiv } from '../styles';
+import { randFiller } from '../dice';
 
 const Body = styled.div`
   overflow: hidden;
@@ -25,19 +26,18 @@ const SignUpPage = props => {
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
   const [ result, setResult ] = useState("");
-
   const { state, dispatch } = useContext(UserContext);
 
   const driverSignUp = (event) => {
     event.preventDefault();
-    const phoneContext = state.phoneNum.join("");
+    const phoneNumFromContext = state.inputPhoneNum;
     const parsedPrice = parseInt(price);
     const registrationWrapper = {
       firstname: firstName,
       lastname: lastName,
-      username: `__${Math.random().toString().slice(2,19)}__`,
-      phone: `__${Math.random().toString().slice(2,19)}__`,
-      email: `__${Math.random().toString().slice(2,19)}__`,
+      username: `__${randFiller(16)}__`,
+      phone: phoneNumFromContext,
+      email: `__${randFiller(16)}__`,
       password: pass,
       price: parsedPrice,
       vehicle_type: "mu",
@@ -64,15 +64,17 @@ const SignUpPage = props => {
 
            <form onSubmit={driverSignUp}>
            <Inputs>
-             <Input  type="text"
-                     name="lastName"
+             <Input  style = {{color: "green"}}
+                     type="text"
+                     name="firstName"
                      value={firstName}
 
                      onChange={event => setFirstName(event.target.value)}
-                     placeholder="First"
               />
-              <Input  type="text"
-                      name="firstName"
+
+              <Input  style = {{color: "green"}}
+                      type="text"
+                      name="lastName"
                       value={lastName}
 
                       onChange={event => setLastName(event.target.value)}
@@ -100,7 +102,7 @@ const SignUpPage = props => {
                      placeholder="Price"
               />
 
-              <Link to='/profile'><ContinueButton> CONTINUE </ContinueButton></Link>
+              <ContinueButton> CONTINUE </ContinueButton>
                </Inputs>
             </form>
 
@@ -115,3 +117,5 @@ const SignUpPage = props => {
 };
 
 export default SignUpPage;
+
+// <Link to='/profile'></Link>

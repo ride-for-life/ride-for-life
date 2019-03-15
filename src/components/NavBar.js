@@ -10,7 +10,6 @@ import DriverProfile from "./DriverProfile";
 import DriverProfile1 from "./DriverProfile1";
 import MapContainer from "./maps/MapContainer"
 import SubmitRating from './Review/';
-import UserCreate from './UserCreate';
 import EditProfile from './EditProfile/';
 import ConfirmPickup from './ConfirmPickup'
 import SearchDrivers from "./maps/index";
@@ -49,9 +48,6 @@ const NavBar = () => {
      <NavLink className="tab" to="/SubmitRating">
        Submit Rating
      </NavLink>
-     <NavLink className="tab" to="/UserCreate">
-       User Login
-     </NavLink>
      <NavLink className="tab" to="/DriverEdit">
        Edit Profile
      </NavLink>
@@ -66,7 +62,6 @@ const NavBar = () => {
      <Route exact path='/PhoneNumber' component={PhoneNumber} />
      <Route exact path='/SearchResult' component = {SearchDrivers} />
      <Route exact path='/SubmitRating' component={SubmitRating} />
-     <Route exact path='/UserCreate' component={UserCreate} />
      <Route exact path='/DriverEdit' component={EditProfile} />
      <Route exact path='/confirm-pickup' component={ConfirmPickup} />
 

@@ -7,7 +7,7 @@ import { colors, fontFamily, NavStyle, OverlayDiv } from '../styles';
 import TransitionButton from '../TransitionButton.js';
 
 const YourLocation = styled.div`
-    pointer-events: all;        
+    pointer-events: all;
     width: 550px;
     max-width: 100%;
     background: ${colors.white};
@@ -60,19 +60,26 @@ const YourLocation = styled.div`
 
 const SearchDrivers = () => {
 
-   const [drivers, setDrivers] = useState({});
+   const [drivers, setDrivers] = useState();
 
   useEffect(
     () => {
       const axiosGet = async () => {
-       const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`)
+       const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`);
         setDrivers(res.data);
-
-      };
+        };
       axiosGet();
-      console.log('Drivers object : ', drivers);
     },
     []
+  );
+
+  useEffect(
+    () => {
+      if (drivers) {
+        console.log('Drivers object is : ', drivers);
+        }
+    },
+    [drivers]
   );
 
 return (

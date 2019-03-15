@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -15,43 +16,31 @@ const QuickStyle = styled.div`
 
 
 const DriverCarousel = props => {
-  const [ drivers, setDrivers ] = useState([]);
+  const {state, dispatch } = useContext(UserContext);
 
-  useEffect(
-    () => {
-      const axiosGet = async () => {
-
-        const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`);
-        setDrivers([...res.data]);
-      };
-      axiosGet();
-    },
-    []
-  );
-
-const carousel = drivers && drivers.map(driver => {
-   return (
-
+  const carousel = state.driverArray && state.driverArray.map(driver => {
+     return (
         <Slide>
-        <NavLink to={`/profile/${driver.driver_id}`}>{JSON.stringify(driver.firstname)}</NavLink>
+          <NavLink to={`/profile/${driver.driver_id}`}>
+            <h4>{driver.firstname}</h4>
+          </NavLink>
         </Slide>
 
-   );
- });
+     );
+   });
 
 
-
-    return (
-      <div>
+  return (
+    <div>
       <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={125}
         totalSlides={3}>
         <Slider>
-      {carousel}
-      </Slider>
+          {carousel}
+        </Slider>
       </CarouselProvider>
-      </div>
+    </div>
   );
 };
 

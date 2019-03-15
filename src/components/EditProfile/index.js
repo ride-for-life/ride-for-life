@@ -21,7 +21,7 @@ const EditProfile = props => {
   const [ selfie, setSelfie ] = useState(null);
   const [ bio, setBio ] = useState('');
   const [ imgurLink, setImgurLink ] = useState('');
-  const id = 1;
+  const id = 13;
 
 
   const driverEdit = () => {
@@ -83,9 +83,11 @@ const EditProfile = props => {
   const editProfile = event => {
     event.preventDefault();
     const changes = {
-      username: `__${Math.random().toString().slice(2,19)}__${bio}`
+      location: location
     };
-    authxios(state.reactiveToken).post(`https://rideforlife.herokuapp.com/api/drivers/create-ride`, changes)
+    authxios(state.reactiveToken).put(`https://rideforlife.herokuapp.com/api/drivers/${id}`, changes)
+      .then(res => { console.log(res) })
+      .catch(err => { console.log(err) })
   };
 
   const makeRide = () => {
@@ -116,53 +118,60 @@ const EditProfile = props => {
       <Inputs>
         <Input  style = {{color: "green"}}
                 type="text"
-                name="lastName"
+                name="firstName"
                 value={firstName}
+                placeholder="First?"
 
                 onChange={event => setFirstName(event.target.value)}
 
          />
          <Input  style = {{color: "green"}}
                  type="text"
-                 name="firstName"
+                 name="lastName"
                  value={lastName}
+                 placeholder="Last?"
 
                  onChange={event => setLastName(event.target.value)}
 
           />
-          <Input
+          <Input style = {{color: "green"}}
                  type="text"
                  name="pass"
                  onChange={event => setPass(event.target.value)}
                  value={pass}
+                 placeholder="Pass?"
 
           />
-         <Input
+         <Input style = {{color: "green"}}
                 type="text"
                 name="location"
                 onChange={event => setLocation(event.target.value)}
                 value={location}
+                placeholder="Location?"
 
          />
-         <Input
+         <Input style = {{color: "green"}}
                 type="text"
                 name="price"
                 onChange={event => setPrice(event.target.value)}
                 value={price}
+                placeholder="Price??"
 
          />
-         <Input
+         <Input style = {{color: "green"}}
                 type="text"
                 name="price"
                 onChange={event => setPhone(event.target.value)}
                 value={phone}
+                placeholder="Phone #?"
 
          />
-         <Input
+         <Input style = {{color: "green"}}
                 type="text"
                 name="price"
                 onChange={event => setEmail(event.target.value)}
                 value={email}
+                placeholder="Email?"
 
          />
          <input type="text" name="bio" value={bio} onChange={event => setBio(event.target.value)}  />

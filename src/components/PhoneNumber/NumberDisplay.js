@@ -4,7 +4,7 @@ import { UserContext } from '../UserContext';
 
 const NumberDisplay = props => {
   let { state, dispatch } = useContext(UserContext);
-  return <TextDisplay>{state.phoneNum}</TextDisplay>
+  return <TextDisplay>{state.inputPhoneNum}</TextDisplay>
 };
 
 export default NumberDisplay;
