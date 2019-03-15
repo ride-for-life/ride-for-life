@@ -60,18 +60,26 @@ const YourLocation = styled.div`
 
 const SearchDrivers = () => {
 
-   const [drivers, setDrivers] = useState({});
+   const [drivers, setDrivers] = useState();
 
   useEffect(
     () => {
       const axiosGet = async () => {
-       const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`)
+       const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`);
         setDrivers(res.data);
         };
       axiosGet();
-      console.log('Drivers object is : ', drivers);
     },
     []
+  );
+
+  useEffect(
+    () => {
+      if (drivers) {
+        console.log('Drivers object is : ', drivers);
+        }
+    },
+    [drivers]
   );
 
 return (
