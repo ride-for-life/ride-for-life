@@ -17,11 +17,9 @@ const Body = styled.div`
 
 const DriverProfile = (props) => {
   const { state, dispatch } = useContext(UserContext);
-  const driver = state.driverCache[(state.viewId)];
+  const driver = state.driverCache && state.viewId ? state.driverCache[(state.viewId)] : null;
 
-
-
-   if (driver) {
+  if (state.driverCache && state.viewId) {
    const drivername = `${driver.firstname} ${driver.lastname}`;
    const location = driver.location;
    const bioString = driver.username && driver.username.length > 20 ? driver.username.slice(20) : 'This driver does not yet have a biography'; // FIXME: not real
@@ -42,9 +40,8 @@ return (
 
       </DriverDiv>
     </Body>
-)
-}
-else {
+  )
+  } else {
   return <h1>Whoops!</h1>
 }
 };

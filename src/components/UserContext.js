@@ -87,6 +87,33 @@ const UserContextProvider = props => {
 
   useEffect(
     () => {
+      const cacheInitGet = async () => {
+       const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/`);
+        dispatch({ type: "cacheInit", payload: [...res.data]});
+        };
+      cacheInitGet();
+    },
+    []
+  ); // can from here on use state.driverCache[driver_id#] to refer to any driver by id!
+
+  useEffect(
+    () => {
+      dispatch({ type: "updateViewId", payload: 3 });
+    },
+    []
+  );
+
+  useEffect(
+    () => {
+      if (state.viewId) {
+        console.log(state.viewId);
+      }
+    },
+    [state.viewId]
+  );
+
+  useEffect(
+    () => {
       if (state.driverLookup) {
         const cacheThisDriver = async (fetchId) => {
           const res = await axios.get(`https://rideforlife.herokuapp.com/api/drivers/${fetchId}`)
