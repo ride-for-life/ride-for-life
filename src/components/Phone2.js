@@ -25,7 +25,7 @@ const Phone2 = () => {
                 <HeadText>{title}</HeadText>
                 <ButtonContainer>
                     <TransitionButton link='/confirm-pickup' text='REQUEST RIDE' />
-                    <TransitionButton link='/search' text='VIEW DRIVERS' />
+                    <TransitionButton link='/SearchResult' text='VIEW DRIVERS' />
                 </ButtonContainer>
             </PhoneDiv>
         </Body>
