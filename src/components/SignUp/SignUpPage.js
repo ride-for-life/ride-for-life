@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
 import TransitionButton from '../TransitionButton'
@@ -12,6 +12,8 @@ import axios from 'axios';
 import '../../index.css';
 import { colors, Input, Inputs, SignUpButtons, ContinueButton, Button, NavStyle, FormContainer, OverlayDiv } from '../styles';
 import { randFiller } from '../dice';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 const Body = styled.div`
   overflow: hidden;
@@ -26,6 +28,17 @@ const SignUpPage = props => {
   const [ location, setLocation ] = useState("");
   const [ price, setPrice ] = useState("");
   const { state, dispatch } = useContext(UserContext);
+  const [ phone, setPhone ] = useState("");
+
+  useEffect(
+    () => {
+      if (phone) {
+        dispatch({ type: "phoneUserUpdate", payload: phone })
+      }
+    },
+    [phone]
+  );
+
 
   const driverSignUp = (event) => {
     event.preventDefault();
@@ -63,12 +76,17 @@ const SignUpPage = props => {
 
            <form onSubmit={driverSignUp}>
            <Inputs>
+             <PhoneInput
+                placeholder="Enter phone number"
+                value={state.inputPhoneNum}
+                onChange={ phone => setPhone(phone) } />
+
              <Input  style = {{color: "green"}}
                      type="text"
                      name="firstName"
                      value={firstName}
-
                      onChange={event => setFirstName(event.target.value)}
+                     placeholder="First Name?"
               />
 
               <Input  style = {{color: "green"}}
@@ -77,7 +95,7 @@ const SignUpPage = props => {
                       value={lastName}
 
                       onChange={event => setLastName(event.target.value)}
-                      placeholder="Last"
+                      placeholder="Last Name?"
                />
                <Input
                       type="password"
