@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import axios from 'axios';
+import { authxios } from './auth';
 
 let UserContext = createContext();
 
@@ -11,8 +12,11 @@ const initState = {
   loggedDriverId: null,
   loggedUserId: null,
   reviewer: false,
-  editing: {},
-  recache: 0
+  editing: '',
+  editText: '',
+  recache: 0,
+  profileUpdate: 0,
+  confirmUpdate: 0
 };
 
 // set up logic for user updating
@@ -32,8 +36,11 @@ const reducer = (state,action) => {
     case "loginSuccess":
       console.log(action.payload);
       return { ...state, loggedToken: action.payload }
-    case "imageUpdate":
-      return { ...state, recache: state.recache+1  };
+    case "forceProfileUpdate":
+      return { ...state,
+        profileUpdate: state.profileUpdate +1,
+        recache: state.recache +1,
+        driverLookup: state.driverLoggedId  };
     case "phoneUserUpdate":
       return { ...state, inputPhoneNum: action.payload };
     case "riderAuth":
@@ -72,20 +79,23 @@ const reducer = (state,action) => {
       });
       return {
         ...state,
-        singleCache: singleCache
+        singleCache: singleCache,
+        confirmUpdate: state.confirmUpdate +1
       } // cacheSingleDriver
     case "updateViewId":
       return {
         ...state,
         viewId: action.payload,
-        driverLookup: action.payload
+        driverLookup: action.payload,
+        profileUpdate: state.profileUpdate +1
       };
     case "driverLoginSuccess":
       return {
         ...state,
         loggedToken: action.payload.token,
         loggedDriverId: action.payload.driver_id,
-        driverLookup: action.payload.driver_id
+        driverLookup: action.payload.driver_id,
+        profileUpdate: state.profileUpdate +1
       };
     case "driverRegisterSuccess":
       console.log(action.payload);
@@ -93,12 +103,34 @@ const reducer = (state,action) => {
         ...state,
         loggedDriverId: action.payload.driver.driver_id,
         loggedToken: action.payload.token,
-        driverLookup: action.payload.driver.driver_id
+        driverLookup: action.payload.driver.driver_id,
+        profileUpdate: state.profileUpdate +1
       }
+    case "beginEditing":
+      return {
+        ...state,
+        finishEdit: state.editing,
+        finishText: state.editText,
+        editing: action.input,
+        editText: action.origin
+      };
+    case "editText":
+      return {
+        ...state,
+        editText: action.payload
+      };
     default:
       return state
   };
 };
+
+// const beginEditing = (editValue, textValue) => {
+//   // if (editing) {
+//   //   await finishEditing =;
+//   // };
+//   setEditing(editValue);
+//   setText(textValue);
+// };
 
 const UserContextProvider = props => {
   const [state, dispatch] = useReducer(reducer, initState);
@@ -120,11 +152,16 @@ const UserContextProvider = props => {
 
   useEffect(
     () => {
-      if (state.testing) {
-        console.log(state.driverCache);
+      if (state.finishEdit) {
+        const finishEditing = async () => {
+          const result = await authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, { [state.finishEdit]: state.finishText })
+          console.log(result);
+          dispatch({ type: "forceProfileUpdate", payload: state.loggedDriverId, love: result })
+        };
+        finishEditing();
       }
     },
-    [state.testing]
+    [state.finishEdit]
   );
 
   useEffect(
@@ -135,10 +172,9 @@ const UserContextProvider = props => {
           dispatch({ type: "cacheSingleDriver", cacheTarget: fetchId, payload: res.data })
         };
         cacheThisDriver(state.driverLookup);
-        console.log(state.driverLookup);
       }
     },
-    [state.driverLookup]
+    [state.profileUpdate]
   );
 
   return (

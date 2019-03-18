@@ -3,6 +3,7 @@ import { DriverNameDiv, DriverBioDiv } from "../styles";
 import { imgxios, authxios } from '../auth';
 import { UserContext } from '../UserContext';
 import styled from 'styled-components';
+import MagicInput from './MagicInput';
 
 const RestrainInput = styled.input`
   box-sizing: border-box;
@@ -21,6 +22,11 @@ const MagicName = props => {
   const { state, dispatch } = useContext(UserContext);
   const [ selfie, setSelfie ] = useState(null);
   const [ imgReady, setImgReady ] = useState();
+  const [ editing, setEditing ] = useState('');
+  const [ text, setText ] = useState('');
+
+
+
 
   const fileSelect = event => {
     setSelfie(event.target.files[0]);
@@ -34,8 +40,6 @@ const MagicName = props => {
     imgxios(imgurKey).post('https://api.imgur.com/3/image', imgData)
       .then(res => {
         console.log(res);
-        console.log(res.data.data.link);
-        dispatch({ type: "imageUpdate", payload: res.data.data.link });
         setImgurLink(res.data.data.link);
       })
       .catch(err => {
@@ -50,9 +54,8 @@ const MagicName = props => {
         const changes = {
           vehicle_type: imgurLink
         };
-        const myToken = state.loggedToken;
-        const myId = state.loggedDriverId
-        authxios(myToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes);
+        await authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes);
+        dispatch({ type: "forceProfileUpdate" })
       };
       axiosPut();
     }},
@@ -62,12 +65,15 @@ const MagicName = props => {
   return (
    <DriverNameDiv>
      <div className="driver-img">
-       {props.cors && <img src={props.driverpic} crossorigin="anonymous" alt={props.firstname} />}
+       {props.cors && <img src={props.driverpic} crossOrigin="anonymous" alt={props.firstname} />}
      </div>
      <RestrainInput type="file" onChange={fileSelect} />
      <RestrainButton onClick={fileUpload}> Upload File? </RestrainButton>
-     <h1>{props.firstname}</h1>
-     <h2>{props.location}</h2>
+     <div>
+      <MagicInput inputName='firstname' originValue={props.firstname} />
+      <MagicInput inputName='lastname' originValue={props.lastname} />
+     </div>
+    <MagicInput inputName='location' originValue={props.location} />
    </DriverNameDiv>
  )
 };

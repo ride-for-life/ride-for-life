@@ -11,6 +11,7 @@ import { renderComponent } from "recompose";
 import styled from 'styled-components';
 import MagicName from './MagicName';
 import { DriverBioDiv } from "../styles";
+import { WideCap } from "../styles";
 
 
 const Body = styled.div`
@@ -27,47 +28,16 @@ const EditMagic = props => {
 
   const [ bio, setBio ] = useState('');
 
-  console.log(props.recache);
-
-
-
-
-  const logClick = event => {
-    console.log(event.target.name)
-  };
-
-  const beginEditing = (event) => {
-    event.preventDefault();
-    setEditing(`${event.target.value}`);
-  };
-
-  const finishEditing = event => {
-    event.preventDefault();
-    const changes = null;
-    authxios(state.loggedToken).put(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`, changes)
-      .then(res => { console.log(res) })
-      .catch(err => { console.log(err) })
-  };
-
-  useEffect(
-    () => {
-      if (editing) {
-        setText()
-      }
-    },
-    [text]
-  );
-
   const deleteMe = () => {
-    authxios(state.loggedToken).delete(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedId}`)
+    authxios(state.loggedToken).delete(`https://rideforlife.herokuapp.com/api/drivers/${state.loggedDriverId}`)
       .then(result => {console.log(result)})
       .catch(error => {console.log(error)})
   };
 
   const driver =
   props.myCache && state.loggedDriverId ?
-    props.myCache [(state.loggedDriverId)] ?
-      props.myCache [(state.loggedDriverId)] :
+    props.myCache[(state.loggedDriverId)] ?
+      props.myCache[(state.loggedDriverId)] :
       props.myCache ?
         props.myCache :
         null
@@ -85,16 +55,16 @@ const EditMagic = props => {
   const driverpic = driver.vehicle_type;
 
 
-
   return (
       <Body>
-      <DriverDiv>
-       <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
-       <MagicName firstname={driver.firstname} location={location} cors={driverCORS} driverpic={driverpic} />
+        <DriverDiv>
+         <NavStyle style={{color: colors.dusk}} to = '/'>←Home</NavStyle>
+         <MagicName firstname={driver.firstname} lastname={driver.lastname} location={location} cors={driverCORS} driverpic={driverpic} />
 
-       <DriverStats driver={driver} rides={rides} reviews={reviews} />
-       <DriverBio driverpic='' name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating} />
-      </DriverDiv>
+         <DriverStats driver={driver} rides={rides} reviews={reviews} />
+         <DriverBio driverpic='' name={drivername} myBio={bioString} driverFor={driverFor} reviews={reviews} avgRating={avgRating} />
+         <WideCap onClick={deleteMe}>Delete This Profile?</WideCap>
+        </DriverDiv>
       </Body>
   )
 } else {

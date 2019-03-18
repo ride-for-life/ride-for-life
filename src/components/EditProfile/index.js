@@ -5,7 +5,7 @@ import { UserContext } from '../UserContext';
 const EditProfile = props => {
   const { state, dispatch } = useContext(UserContext);
   const preferredCache =
-    state.singleCache ? 
+    state.singleCache ?
     state.singleCache :
     state.driverCache ?
     state.driverCache :
@@ -13,7 +13,7 @@ const EditProfile = props => {
 
   return (
     <>
-      { preferredCache ? <EditMagic myCache={preferredCache} loggedDriverId={state.loggedDriverId} recache={state.recache} /> : <p>Waiting...</p> }
+      { preferredCache && state.loggedDriverId ? <EditMagic myCache={preferredCache} loggedDriverId={state.loggedDriverId} key={state.confirmUpdate} /> : <p>Waiting...</p> }
     </>
   )
 }
