@@ -16,7 +16,6 @@ const Body = styled.div`
 `
 
 const DriverLogic = (props) => {
-    console.log(props.recache);
 
   const driver =
     props.myCache && props.viewId ?
@@ -26,6 +25,7 @@ const DriverLogic = (props) => {
           props.myCache :
           null
       : null
+
 
   if (driver) {
    const drivername = `${driver.firstname} ${driver.lastname}`;

@@ -12,7 +12,7 @@ const DriverProfile = (props) => {
 
   return (
     <>
-    { preferredCache ? <DriverLogic driverCache={preferredCache} viewId={state.viewId} recache={state.recache} /> : <p>Waiting...</p> }
+    { preferredCache && state.viewId ? <DriverLogic myCache={preferredCache} viewId={state.viewId} /> : <p>Waiting...</p> }
     </>
 
   )
