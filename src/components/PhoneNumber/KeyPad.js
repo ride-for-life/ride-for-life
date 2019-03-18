@@ -17,7 +17,7 @@ const KeyContainer = styled.div`
   height: 100%;
   max-width: 800px;
   padding: 25px;
-  // FIXME: No idea why not having this results in a gap 
+  // FIXME: No idea why not having this results in a gap
   margin-bottom: -25px;
   box-sizing: border-box;
 `;
@@ -28,7 +28,7 @@ const KeyPad = props => {
   let reset = () => dispatch({ type: "reset" });
 
   const keyNums = [1,2,3,4,5,6,7,8,9]
-  const keyMap = keyNums.map(keyNum => <PhoneKey keyNum={keyNum} />)
+  const keyMap = keyNums.map(keyNum => <PhoneKey keyNum={keyNum} key={keyNum} />)
 
   return (
       <KeyContainer>
